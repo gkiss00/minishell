@@ -14,6 +14,32 @@ static void	ft_ctrl_d(t_data *data)
 	exit(tmp);
 }
 
+static int	ft_pipe_ok(t_data *data)
+{
+	data->i1 = 0;
+	data->i2 = 0;
+	if (data->gnl_line == NULL)
+		return (-1);
+	while(data->gnl_line[data->i1] != '\0')
+	{
+		if (data->gnl_line[data->i1] == '|')
+		{
+			data->i2 = 1;
+			++data->i1;
+		}
+		if (data->gnl_line[data->i1] == '\0')
+			break;
+		if (data->gnl_line[data->i1] != '|' && data->gnl_line[data->i1] != ' ')
+			data->i2 = 0;
+		++data->i1;
+	}
+	data->i1 = 0;
+	if (data->i2 == 0)
+		return (1);
+	data->i2 = 0;	
+	return(-1);
+}
+
 static int	ft_quote_ok(t_data *data)
 {
 	data->c1 = 0;
@@ -42,7 +68,7 @@ static int	ft_quote_ok(t_data *data)
 
 int            ft_get_input(t_data *data)
 {
-    while(ft_quote_ok(data) != 1)
+    while(ft_quote_ok(data) == -1 || ft_pipe_ok(data) == -1)
     {
         if ((data->gnl_ret = get_next_line(1, &data->gnl_tmp)) == -1)
 			return (ft_error(NULL, 1));
@@ -56,8 +82,5 @@ int            ft_get_input(t_data *data)
     free(data->gnl_line);
 	data->gnl_line = NULL;
 	data->gnl_tmp = NULL;
-    int i = 0;
-    while (data->tabinput[i])
-        puts(data->tabinput[i++]);
     return (0);
 }

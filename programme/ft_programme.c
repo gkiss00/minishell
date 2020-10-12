@@ -2,6 +2,16 @@
 
 void        ft_programme(t_data *data)
 {
-    ft_get_input(data);
-    ft_do_actions(data);
+    int     i;
+
+    i = 0;
+    if (ft_get_input(data) == -1)
+        return ;
+    while(data->tabinput[i] != NULL)
+    {
+        puts(data->tabinput[i]);
+        ft_get_actions(data, i);
+        ++i;
+    }
+    
 }

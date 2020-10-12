@@ -22,9 +22,7 @@ static void     init_data(t_data *data)
 
 static int     fill_data(t_data *data)
 {
-    if ((data->env = malloc(sizeof(char *) * 200)) == NULL)
-        return(1);
-    data->env[0] = NULL;
+    data->env = ft_copy_tab(environ);
     if ((data->path = ft_calloc(1, 200)) == NULL)
     {
         ft_free_data(data);
@@ -48,7 +46,6 @@ static void     launch_programme()
     init_data(data);
     if (fill_data(data) == 1)
         return ;
-    puts(data->path);
     while(1)
     {
         write(1, "-> minishell # ", 15);

@@ -29,7 +29,7 @@ char        **ft_add_to_tab(char **tab, char *str)
     int     i = 0;
     char    **new_tab;
 
-    if ((new_tab = malloc(sizeof(char *) * get_length(tab) + 2)) == NULL)
+    if ((new_tab = malloc(sizeof(char *) * (get_length(tab) + 2))) == NULL)
         return (NULL);
     while(tab[i] != NULL)
     {

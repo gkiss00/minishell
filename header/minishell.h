@@ -38,12 +38,19 @@ extern char         **environ;
 
 //const int MALLOC_ERROR = 1;
 
+typedef struct      s_tmp
+{
+    char            *str;
+    int             type;
+    struct s_tmp    *next;
+}                   t_tmp;
+
 typedef struct      s_cmd
 {
     char            *cmd;
     char            **arg;
     int             type;
-    struct s_cmd   *next;
+    struct s_cmd    *next;
 }                   t_cmd;
 
 typedef struct      s_data
@@ -80,18 +87,27 @@ typedef struct      s_data
 char                **ft_sp_split(char *str, char c);
 char                **ft_add_to_tab(char **tab, char *str);
 int                 get_length(char **tab);
+char                **ft_copy_tab(char **tab);
+char                *ft_transform(char *str);
+char                **ft_copy_tab_transformed(char **tab);
+void                ft_print_tab(char **tab);
 /*
 ** Chain_list
 */
-t_cmd               *ft_new();
-void                ft_add_back(t_cmd *head, t_cmd *last);
+t_cmd               *ft_cmd_new();
+t_cmd               *ft_cmd_last(t_cmd *head);
+void                ft_cmd_add_back(t_cmd **head, t_cmd *last);
+void                ft_print_cmd(t_cmd *head);
+t_tmp               *ft_tmp_new();
+t_tmp               *ft_tmp_last(t_tmp *head);
+void                ft_tmp_add_back(t_tmp **head, t_tmp *last);
+void                ft_print_tmp(t_tmp *head);
 /*
 ** Programme
 */
 void                ft_programme(t_data *data);
-void                ft_listen(t_data *data);
 int                 ft_get_input(t_data *data);
-void                ft_do_actions(t_data *data);
+void                ft_get_actions(t_data *data, int i);
 /*
 ** Options
 */
@@ -107,6 +123,7 @@ int			        ft_error(char *str, int i);
 void                ft_free_data(t_data *data);
 void                ft_free_tmp_data(t_data *data);
 void                ft_free_cmd(t_cmd *cmd);
+void                ft_free_tmp(t_tmp *cmd);
 int                 ft_free_error(t_data *data);
 void                ft_free_tab1(char *str);
 void                ft_free_tab2(char **tab);

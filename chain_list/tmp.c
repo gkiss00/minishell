@@ -1,16 +1,14 @@
 #include "../header/minishell.h"
 
-void        ft_print_cmd(t_cmd *head)
+void        ft_print_tmp(t_tmp *head)
 {
-    t_cmd   *save;
+    t_tmp *save;
 
     save = head;
     while (head != NULL)
     {
         ft_putstr_fd("\n", 1);
-        ft_putstr_fd(head->cmd, 1);
-        ft_putstr_fd("\n", 1);
-        ft_print_tab(head->arg);
+        ft_putstr_fd(head->str, 1);
         ft_putstr_fd("\n", 1);
         ft_putnbr_fd(head->type, 1);
         ft_putstr_fd("\n", 1);
@@ -19,15 +17,15 @@ void        ft_print_cmd(t_cmd *head)
     head = save;
 }
 
-void        ft_cmd_add_back(t_cmd **head, t_cmd *new)
+void        ft_tmp_add_back(t_tmp **head, t_tmp *new)
 {
-    t_cmd	*last;
+    t_tmp	*last;
 
 	if (head)
 	{
 		if (*head)
 		{
-			last = ft_cmd_last(*head);
+			last = ft_tmp_last(*head);
 			last->next = new;
 		}
 		else
@@ -35,7 +33,7 @@ void        ft_cmd_add_back(t_cmd **head, t_cmd *new)
 	}
 }
 
-t_cmd       *ft_cmd_last(t_cmd *head)
+t_tmp       *ft_tmp_last(t_tmp *head)
 {
     while (head)
 	{
@@ -46,14 +44,14 @@ t_cmd       *ft_cmd_last(t_cmd *head)
 	return (head);
 }
 
-t_cmd       *ft_cmd_new()
+t_tmp       *ft_tmp_new()
 {
-    t_cmd *new;
+    t_tmp   *new;
 
-    if ((new = malloc(sizeof(t_cmd))) == NULL)
+    new = malloc(sizeof(t_tmp));
+    if (new == NULL)
         return (NULL);
-    new->cmd = NULL;
-    new->arg = NULL;
+    new->str = NULL;
     new->type = 0;
     new->next = NULL;
     return (new);
