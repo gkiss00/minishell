@@ -11,7 +11,6 @@ void        ft_print_cmd(t_cmd *head)
         ft_putstr_fd(head->cmd, 1);
         ft_putstr_fd("\n", 1);
         ft_print_tab(head->arg);
-        ft_putstr_fd("\n", 1);
         ft_putnbr_fd(head->type, 1);
         ft_putstr_fd("\n", 1);
         head = head->next;

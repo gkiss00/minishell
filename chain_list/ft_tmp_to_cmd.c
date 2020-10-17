@@ -1,6 +1,6 @@
 #include "../header/minishell.h"
 
-static void     ft_fill_cmd(t_cmd *cmd, t_tmp *tmp, int t)
+static t_tmp    *ft_fill_cmd(t_cmd *cmd, t_tmp *tmp, int t)
 {
     int     i;
 
@@ -15,34 +15,29 @@ static void     ft_fill_cmd(t_cmd *cmd, t_tmp *tmp, int t)
         tmp = tmp->next;
         ++i;
     }
+    return (tmp);
 }
 
 static t_cmd    *ft_get_cmd(t_tmp *tmp)
 {
     int     i;
     int     t;
-    t_tmp   *save_tmp;
     t_cmd   *c;
     t_cmd   *save_cmd;
 
     i = 0;
-    save_tmp = tmp;
     save_cmd = NULL;
     while(tmp != NULL)
     {
         if (tmp->type != 0 || i == 0)
             c = ft_cmd_new();
+        t = tmp->type;
         if (tmp->type != 0)
-        {
-            t = tmp->type;
             tmp = tmp->next;
-        }
-        ft_fill_cmd(c, tmp, t);
+        tmp = ft_fill_cmd(c, tmp, t);
         ft_cmd_add_back(&save_cmd, c);
-        ft_print_cmd(save_cmd);
         ++i;
     }
-    tmp = save_tmp;
     return (save_cmd);
 }
 
@@ -52,6 +47,5 @@ t_cmd           *ft_tmp_to_cmd(t_tmp *tmp)
 
     cmd = NULL;
     cmd = ft_get_cmd(tmp);
-    ft_free_tmp(tmp);
     return (cmd);
 }
