@@ -22,7 +22,8 @@ static void     init_data(t_data *data)
 
 static int     fill_data(t_data *data)
 {
-    data->env = ft_copy_tab(environ);
+    if ((data->env = ft_copy_tab(environ)) == NULL)
+        return (1);
     if ((data->path = ft_calloc(1, 200)) == NULL)
     {
         ft_free_data(data);

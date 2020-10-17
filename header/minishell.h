@@ -34,6 +34,8 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 
+#define MALLOC 1
+
 extern char         **environ;
 
 //const int MALLOC_ERROR = 1;
