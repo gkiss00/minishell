@@ -102,6 +102,8 @@ t_tmp               *ft_tmp_new();
 t_tmp               *ft_tmp_last(t_tmp *head);
 void                ft_tmp_add_back(t_tmp **head, t_tmp *last);
 void                ft_print_tmp(t_tmp *head);
+t_tmp               *ft_tab_to_tmp(char **str);
+t_cmd               *ft_tmp_to_cmd(t_tmp *tmp);
 /*
 ** Programme
 */

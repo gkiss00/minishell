@@ -19,6 +19,8 @@ SRCS				= 	main.c \
 						utils/ft_print_tab.c \
 						chain_list/cmd.c \
 						chain_list/tmp.c \
+						chain_list/ft_tab_to_tmp.c \
+						chain_list/ft_tmp_to_cmd.c \
 						free/ft_free.c \
 						free/ft_free_data.c \
 						free/ft_free_error.c \

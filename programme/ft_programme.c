@@ -9,7 +9,6 @@ void        ft_programme(t_data *data)
         return ;
     while(data->tabinput[i] != NULL)
     {
-        puts(data->tabinput[i]);
         ft_get_actions(data, i);
         ++i;
     }

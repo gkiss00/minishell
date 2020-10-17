@@ -5,7 +5,7 @@ int         get_length(char **tab)
     int     i;
 
     i = 0;
-    if (!tab)
+    if (tab == NULL)
         return (0);
     while(tab[i] != NULL)
         ++i;
@@ -31,7 +31,7 @@ char        **ft_add_to_tab(char **tab, char *str)
 
     if ((new_tab = malloc(sizeof(char *) * (get_length(tab) + 2))) == NULL)
         return (NULL);
-    while(tab[i] != NULL)
+    while(tab != NULL && tab[i] != NULL)
     {
         new_tab[i] = ft_strdup(tab[i]);
         if (new_tab[i] ==  NULL)
