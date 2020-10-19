@@ -16,7 +16,8 @@ void        ft_programme(t_data *data)
     while(data->tabinput[i] != NULL)
     {
         ft_get_actions(data, i);
-        ft_do_actions(data);
+        ft_print_cmd(data->cmd);
+        //ft_do_actions(data);
         reset(data);
         ++i;
     }

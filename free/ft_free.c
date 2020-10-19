@@ -5,7 +5,7 @@ void        ft_free_tab2(char **tab)
     int     i;
 
     i = 0;
-    if (!tab)
+    if (tab == NULL)
         return ;
     while(tab[i] != NULL)
     {
