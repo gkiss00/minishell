@@ -9,8 +9,6 @@ static int          ft_get_commandes(t_data *data, int i)
         return (ft_free_error(data));
     tmp = ft_tab_to_tmp(data->tab_tmp);
     data->cmd = ft_tmp_to_cmd(tmp);
-    ft_print_cmd(data->cmd);
-    ft_free_cmd(data->cmd);
     ft_free_tmp(tmp);
     return (1);
 }

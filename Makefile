@@ -29,6 +29,10 @@ SRCS				= 	main.c \
 						programme/ft_programme.c \
 						programme/ft_get_input.c \
 						programme/ft_get_actions.c \
+						programme/ft_do_actions.c \
+						cmd/pwd/ft_pwd.c \
+						cmd/env/ft_env.c \
+						cmd/exit/ft_exit.c \
 						errors/ft_errors.c \
 
 OBJS				= ${SRCS:.c=.o}

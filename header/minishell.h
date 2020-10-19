@@ -35,6 +35,10 @@
 # include "../libft/libft.h"
 
 #define MALLOC 1
+#define NOT_FOUND 2
+#define PARSE 3
+#define NO_FILE_OR_DIR 4
+#define REDIRECTION 5
 
 extern char         **environ;
 
@@ -76,7 +80,11 @@ typedef struct      s_data
 
     char            **tabinput;
     
-    struct s_cmd   *cmd;
+    struct s_cmd    *cmd;
+    struct s_cmd    **cmd_tab;
+    int             cmd_act;
+
+    int             fd;
 
     int             last_output;
     int             ret;
@@ -112,11 +120,24 @@ t_cmd               *ft_tmp_to_cmd(t_tmp *tmp);
 void                ft_programme(t_data *data);
 int                 ft_get_input(t_data *data);
 void                ft_get_actions(t_data *data, int i);
+void                ft_do_actions(t_data *data);
 /*
 ** Options
 */
 void                ft_sigint(int n);
 void                ft_sigquit(int n);
+/*
+** Cmd/pwd
+*/
+void                ft_pwd(t_data *data);
+/*
+** Cmd/env
+*/
+void                ft_env(t_data *data);
+/*
+** Cmd/exit
+*/
+void                ft_exit(t_data *data);
 /*
 ** Errors
 */

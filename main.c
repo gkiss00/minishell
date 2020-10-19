@@ -16,6 +16,9 @@ static void     init_data(t_data *data)
     data->env = NULL;
     data->path = NULL;
     data->cmd = NULL;
+    data->cmd_tab = NULL;
+    data->cmd_act = 0;
+    data->fd = 1;
     data->last_output = 0;
     data->ret = 0;
 }
