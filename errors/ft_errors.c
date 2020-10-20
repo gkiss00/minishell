@@ -10,7 +10,7 @@ int			ft_error(char *str, int i)
 		ft_putstr_fd(str, 2);
 		ft_putchar_fd('\n', 2);
 	}
-	if (i == 3)
+	if (i == PARSE)
 		ft_putstr_fd("minishell: parse error near `\\n'\n", 2);
 	if (i == NO_FILE_OR_DIR)
 	{
@@ -18,7 +18,11 @@ int			ft_error(char *str, int i)
 		ft_putstr_fd_int(str, 2);
 		ft_putchar_fd('\n', 2);
 	}
-	if (i == REDIRECTION)
-		ft_putstr_fd("syntax error near unexpected token `newline'", 2);
+	if (i == SYNTAX)
+	{
+		ft_putstr_fd("syntax error near unexpected token `", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("'\n", 2);
+	}
 	return (-1);
 }

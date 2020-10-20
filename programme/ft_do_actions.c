@@ -2,11 +2,8 @@
 
 void        ft_do_actions(t_data *data)
 {
-    char    *p =  ft_get_path(data->path, data->cmd->arg[0]);
-    puts(p);
-    free(p);
+    data->i3 = 0;
     //ft_pwd(data);
     //ft_env(data);
-    ft_exit(data);
-    
+    //ft_exit(data);
 }

@@ -22,6 +22,8 @@ SRCS				= 	main.c \
 						utils/tab/ft_remove_from_tab.c \
 						utils/tab/ft_tab_join.c \
 						utils/tab/ft_join_two_tabs.c \
+						utils/file_and_dir/ft_does_file_exist.c \
+						utils/file_and_dir/ft_does_dir_exist.c \
 						utils/ft_get_path.c \
 						chain_list/cmd.c \
 						chain_list/tmp.c \
@@ -40,6 +42,7 @@ SRCS				= 	main.c \
 						cmd/env/ft_env.c \
 						cmd/exit/ft_exit.c \
 						errors/ft_errors.c \
+						errors/input_errors/ft_check_input.c \
 
 OBJS				= ${SRCS:.c=.o}
 

@@ -38,7 +38,7 @@
 #define NOT_FOUND 2
 #define PARSE 3
 #define NO_FILE_OR_DIR 4
-#define REDIRECTION 5
+#define SYNTAX 5
 
 extern char         **environ;
 
@@ -107,6 +107,8 @@ char                **ft_remove_from_tab(char **tab, int index);
 char                *ft_tab_join(char **tab, char *str);
 char                **ft_join_two_tabs(char **t1, char **t2);
 char                *ft_get_path(char *current, char *dir);
+int                 ft_does_dir_exist(char *path);
+int                 ft_does_file_exist(char *path);
 /*
 ** Chain_list
 */
@@ -148,6 +150,7 @@ void                ft_exit(t_data *data);
 ** Errors
 */
 int			        ft_error(char *str, int i);
+int                 ft_check_input(t_data *data);
 /*
 ** Free
 */
