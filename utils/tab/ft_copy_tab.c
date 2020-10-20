@@ -1,6 +1,6 @@
-#include "../header/minishell.h"
+#include "../../header/minishell.h"
 
-char        **ft_copy_tab_transformed(char **tab)
+char        **ft_copy_tab(char **tab)
 {
     int     i;
     char    **tmp;
@@ -11,7 +11,7 @@ char        **ft_copy_tab_transformed(char **tab)
         return (NULL);
     while(tab[i] != NULL)
     {
-        if((tmp[i] = ft_transform(tab[i])) == NULL)
+        if((tmp[i] = ft_strdup(tab[i])) == NULL)
         {
             ft_free_tab2(tmp);
             return (NULL);

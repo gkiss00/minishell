@@ -101,6 +101,12 @@ char                **ft_copy_tab(char **tab);
 char                *ft_transform(char *str);
 char                **ft_copy_tab_transformed(char **tab);
 void                ft_print_tab(char **tab);
+char                **ft_remove_front_tab(char **tab);
+char                **ft_remove_back_tab(char **tab);
+char                **ft_remove_from_tab(char **tab, int index);
+char                *ft_tab_join(char **tab, char *str);
+char                **ft_join_two_tabs(char **t1, char **t2);
+char                *ft_get_path(char *current, char *dir);
 /*
 ** Chain_list
 */

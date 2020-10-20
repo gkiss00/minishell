@@ -17,7 +17,7 @@ void        ft_programme(t_data *data)
     {
         ft_get_actions(data, i);
         ft_print_cmd(data->cmd);
-        //ft_do_actions(data);
+        ft_do_actions(data);
         reset(data);
         ++i;
     }

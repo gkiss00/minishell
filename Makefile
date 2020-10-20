@@ -12,11 +12,17 @@
 
 SRCS				= 	main.c \
 						utils/ft_sp_split.c \
-						utils/ft_add_to_tab.c \
+						utils/tab/ft_add_to_tab.c \
 						utils/ft_transform.c \
-						utils/ft_copy_tab.c \
-						utils/ft_copy_tab_transformed.c \
-						utils/ft_print_tab.c \
+						utils/tab/ft_copy_tab.c \
+						utils/tab/ft_copy_tab_transformed.c \
+						utils/tab/ft_print_tab.c \
+						utils/tab/ft_remove_back_tab.c \
+						utils/tab/ft_remove_front_tab.c \
+						utils/tab/ft_remove_from_tab.c \
+						utils/tab/ft_tab_join.c \
+						utils/tab/ft_join_two_tabs.c \
+						utils/ft_get_path.c \
 						chain_list/cmd.c \
 						chain_list/tmp.c \
 						chain_list/ft_tab_to_tmp.c \
