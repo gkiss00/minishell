@@ -23,7 +23,6 @@ static int  file_exist(t_cmd *cmd, char *current)
     }
     if ((tmp = get_file_path(current, tmp)) == NULL)
         return (ft_error(NULL, MALLOC));
-    puts("oui");
     if ((ret = ft_does_file_exist(tmp)) == -1)
         return (ft_error(NULL, NO_FILE_OR_DIR));
     ft_free_tab1(tmp);
