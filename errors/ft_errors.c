@@ -20,9 +20,13 @@ int			ft_error(char *str, int i)
 	}
 	if (i == SYNTAX)
 	{
-		ft_putstr_fd("syntax error near unexpected token `", 2);
+		ft_putstr_fd("minishell: syntax error near unexpected token `", 2);
 		ft_putstr_fd(str, 2);
 		ft_putstr_fd("'\n", 2);
+	}
+	if (i == PERMISSION_DENIED)
+	{
+		ft_putstr_fd("minishell: Permission denied\n", 2);
 	}
 	return (-1);
 }

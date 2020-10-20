@@ -12,7 +12,7 @@ static char *get_file_path(char *current, char *file)
 
 static int  file_exist(t_cmd *cmd, char *current)
 {
-    int     fd;
+    int     ret;
     char    *tmp;
 
     tmp = ft_transform(cmd->cmd);
@@ -23,12 +23,9 @@ static int  file_exist(t_cmd *cmd, char *current)
     }
     if ((tmp = get_file_path(current, tmp)) == NULL)
         return (ft_error(NULL, MALLOC));
-    fd = open(tmp, O_RDONLY);
+    ret = ft_does_file_exist(tmp);
     ft_free_tab1(tmp);
-    if (fd < 0)
-        return (-1);
-    close(fd);
-    return (0);
+    return (ret);
 }
 
 static int  check_file(t_cmd *cmd, char *current)
@@ -63,7 +60,7 @@ int         ft_check_redirections(t_cmd *cmd, char *current)
         if (cmd->type == 3 || cmd->type == 4)
         {
             if (check_file(cmd, current) == -1)
-                return (-1);
+                return (ft_error(NULL, PERMISSION_DENIED));
         }
         if (cmd->type == 2)
         {

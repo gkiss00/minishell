@@ -39,6 +39,7 @@
 #define PARSE 3
 #define NO_FILE_OR_DIR 4
 #define SYNTAX 5
+#define PERMISSION_DENIED 6
 
 extern char         **environ;
 
