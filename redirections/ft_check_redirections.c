@@ -23,7 +23,9 @@ static int  file_exist(t_cmd *cmd, char *current)
     }
     if ((tmp = get_file_path(current, tmp)) == NULL)
         return (ft_error(NULL, MALLOC));
-    ret = ft_does_file_exist(tmp);
+    puts("oui");
+    if ((ret = ft_does_file_exist(tmp)) == -1)
+        return (ft_error(NULL, NO_FILE_OR_DIR));
     ft_free_tab1(tmp);
     return (ret);
 }
@@ -37,7 +39,6 @@ static int  check_file(t_cmd *cmd, char *current)
     if (ft_strcmp(tmp, "") == 0)
     {
         ft_free_tab1(tmp);
-        puts("oui");
         return (ft_error(NULL, NO_FILE_OR_DIR));
     }
     if ((tmp = get_file_path(current, tmp)) == NULL)
@@ -45,7 +46,7 @@ static int  check_file(t_cmd *cmd, char *current)
     fd = open(tmp, O_CREAT);
     ft_free_tab1(tmp);
     if (fd < 0)
-        return (-1);
+        return (ft_error(NULL, PERMISSION_DENIED));
     close(fd);
     return (0);
 }
@@ -60,12 +61,12 @@ int         ft_check_redirections(t_cmd *cmd, char *current)
         if (cmd->type == 3 || cmd->type == 4)
         {
             if (check_file(cmd, current) == -1)
-                return (ft_error(NULL, PERMISSION_DENIED));
+                return (-1);   
         }
         if (cmd->type == 2)
         {
             if(file_exist(cmd, current) == -1)
-                return (ft_error(NULL, NO_FILE_OR_DIR));
+                return (-1);
         }
         cmd = cmd->next;
     }

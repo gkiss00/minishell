@@ -4,6 +4,9 @@ static void reset(t_data *data)
 {
     ft_free_cmd(data->cmd);
     data->cmd = NULL;
+    if (data->cmd_tab)
+        free(data->cmd_tab);
+    data->cmd_tab = NULL;
 }
 
 void        ft_programme(t_data *data)
