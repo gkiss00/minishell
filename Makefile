@@ -41,6 +41,7 @@ SRCS				= 	main.c \
 						cmd/pwd/ft_pwd.c \
 						cmd/env/ft_env.c \
 						cmd/exit/ft_exit.c \
+						redirections/ft_check_redirections.c \
 						errors/ft_errors.c \
 						errors/input_errors/ft_check_input.c \
 

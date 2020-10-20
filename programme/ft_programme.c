@@ -22,6 +22,7 @@ void        ft_programme(t_data *data)
     while(data->tabinput[i] != NULL)
     {
         ft_get_actions(data, i);
+        ft_check_redirections(data->cmd, data->path);
         ft_do_actions(data);
         reset(data);
         ++i;

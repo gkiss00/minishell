@@ -152,6 +152,10 @@ void                ft_exit(t_data *data);
 int			        ft_error(char *str, int i);
 int                 ft_check_input(t_data *data);
 /*
+** Redirections
+*/
+int                 ft_check_redirections(t_cmd *cmd, char *current);
+/*
 ** Free
 */
 void                ft_free_data(t_data *data);
