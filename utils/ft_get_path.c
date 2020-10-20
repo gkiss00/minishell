@@ -27,9 +27,6 @@ static char *get_absolute_path(char **tab)
             tab = ft_remove_from_tab(tab, i - 1);
             i = -1;
         }
-        printf("*****TAB %d*****\n", i);
-        ft_print_tab(tab);
-        puts("**************\n");
         ++i;
     }
     path = ft_tab_join(tab, "/");

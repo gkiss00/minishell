@@ -17,16 +17,16 @@ char    **ft_remove_from_tab(char **tab, int index)
     char    **new_tab;
 
     i = -1;
-    j = -1;
+    j = 0;
     if (tab == NULL || index < 0 || index > get_length(tab) - 1)
         return (tab);
     if ((new_tab = malloc(sizeof(char*) * get_size(tab))) == NULL)
         return (NULL);
-    while(tab[++i] != NULL && i < get_length(tab) - 1)
+    while(tab[++i] != NULL)
     {
         if (i != index)
         {
-            if ((new_tab[++j] = ft_strdup(tab[i])) == NULL)
+            if ((new_tab[j++] = ft_strdup(tab[i])) == NULL)
             {
                 ft_free_tab2(new_tab);
                 return (tab);
