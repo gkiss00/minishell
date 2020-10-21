@@ -42,7 +42,7 @@ static int  check_file(t_cmd *cmd, char *current)
     }
     if ((tmp = get_file_path(current, tmp)) == NULL)
         return (ft_error(NULL, MALLOC));
-    fd = open(tmp, O_CREAT);
+    fd = open(tmp, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
     ft_free_tab1(tmp);
     if (fd < 0)
         return (ft_error(NULL, PERMISSION_DENIED));

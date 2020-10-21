@@ -1,0 +1,14 @@
+minishell: stdin: Input/output error
+md
+errors
+free
+header
+hub
+libft
+main.c
+main2.c
+options
+programme
+redirections
+test.txt
+utils
