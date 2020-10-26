@@ -20,7 +20,9 @@ int     main()
     char    *path = "/users/kissgautier/Desktop/minishell";
     char    *hub = "hub";
     char    buff[10];
+    int     pipefd[2];
     
+    pipe(pipefd);
     pid = fork();
     if (pid < 0)
     {
@@ -28,36 +30,30 @@ int     main()
     }
     else if (pid == 0)
     {
-        char buff[10];
+        close(pipefd[0]);    // close reading end in the child
 
-        int fd = open("test1.txt", O_CREAT | O_RDONLY | O_WRONLY, S_IRUSR | S_IWUSR);
+        dup2(pipefd[1], 1);  // send stdout to the pipe
+        dup2(pipefd[1], 2);  // send stderr to the pipe
 
-        pid_t pid2;
-
-        dup2(fd, 1);
-        dup2(fd, 2);
-        close(fd);
-
-        pid2 = fork();
-        if (pid2 == 0)
-        {
-            int fd1 = open("test2.txt", O_CREAT | O_RDONLY | O_WRONLY, S_IRUSR | S_IWUSR);
-            dup2(fd1, 1);
-            dup2(fd1, 2);
-            close(fd);
-            execve("/bin/ls", &path, environ);
-            exit(0);
-            exit(0);
-        }
-        else
-        {
-            wait(NULL);
-            
-            
-        }
-        
-        
+        close(pipefd[1]);
+        execve("/bin/ls", &path, environ);
         exit(0);
     }
+    else
+    {
+        char *tmp = "options";
+        close(pipefd[1]);
+        int fd = open("test1.txt", O_CREAT | O_RDONLY | O_WRONLY, S_IRUSR | S_IWUSR);
+        dup2(fd, 1);
+        dup2(fd, 2);
+        close(fd);  
+        int fd1 = open("test2.txt", O_CREAT | O_RDONLY | O_WRONLY, S_IRUSR | S_IWUSR);
+        dup2(fd1, 1);
+        dup2(fd1, 2);
+        close(fd1);
+        wait(NULL);
+        execve("/bin/grep", &tmp, environ);
+    }
+    
 
 }

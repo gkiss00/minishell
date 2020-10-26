@@ -1,5 +1,26 @@
 #include "../header/minishell.h"
-/*
+
+static void         ft_cut(t_data *data)
+{
+    t_cmd   *save;
+    t_cmd   *tmp;
+
+    tmp = NULL;
+    save = data->cmd;
+    while(data->cmd != NULL)
+    {
+        if(data->cmd->next != NULL && data->cmd->next->type == 1)
+        {
+            tmp = data->cmd;
+            data->cmd = data->cmd->next;
+            tmp->next = NULL;
+        }
+        else
+            data->cmd = data->cmd->next;
+    }
+    data->cmd = NULL;
+}
+
 static int          get_nb_pipe(t_cmd *cmd)
 {
     int     nb;
@@ -30,15 +51,17 @@ static int          ft_devide_commandes(t_data *data)
     {
         data->cmd_tab[i] = tmp;
         ++i;
-        while(data->cmd->type != 1)
+        while(data->cmd != NULL && data->cmd->type != 1)
             data->cmd = data->cmd->next;
+        
         tmp = data->cmd;
-        data->cmd = data->cmd->next;
+        if (data->cmd != NULL)
+            data->cmd = data->cmd->next;
     }
     data->cmd_tab[i] = NULL;
     data->cmd = save;
     return (0);
-}*/
+}
 
 static int          ft_get_commandes(t_data *data, int i)
 {
@@ -56,5 +79,6 @@ static int          ft_get_commandes(t_data *data, int i)
 void                ft_get_actions(t_data *data, int i)
 {
     ft_get_commandes(data, i);
-    //ft_devide_commandes(data);
+    ft_devide_commandes(data);
+    ft_cut(data);
 }

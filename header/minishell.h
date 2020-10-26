@@ -167,4 +167,5 @@ void                ft_free_tmp(t_tmp *cmd);
 int                 ft_free_error(t_data *data);
 void                ft_free_tab1(char *str);
 void                ft_free_tab2(char **tab);
+void                ft_free_cmd2(t_cmd **cmd);
 #endif

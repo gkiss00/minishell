@@ -13,7 +13,6 @@ main2.c
 options
 programme
 redirections
-test.txt
 test1.txt
 test2.txt
 utils
