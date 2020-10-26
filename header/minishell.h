@@ -150,6 +150,10 @@ void                ft_env(t_data *data);
 */
 void                ft_exit(t_data *data);
 /*
+** Cmd/echo
+*/
+void                ft_echo(t_data *data);
+/*
 ** Cmd_options
 */
 void                ft_check_options_echo(t_data *data);
