@@ -81,4 +81,11 @@ void                ft_get_actions(t_data *data, int i)
     ft_get_commandes(data, i);
     ft_devide_commandes(data);
     ft_cut(data);
+    ft_check_options_echo(data);
+    int     j = 0;
+    while(data->cmd_tab[j])
+    {
+        ft_print_cmd(data->cmd_tab[j]);
+        ++j;
+    }
 }

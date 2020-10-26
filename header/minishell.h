@@ -57,6 +57,7 @@ typedef struct      s_cmd
     char            *cmd;
     char            **arg;
     int             type;
+    int             opt;
     struct s_cmd    *next;
 }                   t_cmd;
 
@@ -148,6 +149,10 @@ void                ft_env(t_data *data);
 ** Cmd/exit
 */
 void                ft_exit(t_data *data);
+/*
+** Cmd_options
+*/
+void                ft_check_options_echo(t_data *data);
 /*
 ** Errors
 */
