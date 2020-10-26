@@ -110,6 +110,7 @@ char                **ft_join_two_tabs(char **t1, char **t2);
 char                *ft_get_path(char *current, char *dir);
 int                 ft_does_dir_exist(char *path);
 int                 ft_does_file_exist(char *path);
+char                *ft_tomaj(char *str);
 /*
 ** Chain_list
 */

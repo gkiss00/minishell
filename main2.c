@@ -30,11 +30,33 @@ int     main()
     {
         char buff[10];
 
-        int fd = open("test.txt", O_CREAT | O_RDONLY | O_WRONLY, S_IRUSR | S_IWUSR);
+        int fd = open("test1.txt", O_CREAT | O_RDONLY | O_WRONLY, S_IRUSR | S_IWUSR);
+
+        pid_t pid2;
+
         dup2(fd, 1);
         dup2(fd, 2);
         close(fd);
-        execve("/bin/cat", &path, environ);
+
+        pid2 = fork();
+        if (pid2 == 0)
+        {
+            int fd1 = open("test2.txt", O_CREAT | O_RDONLY | O_WRONLY, S_IRUSR | S_IWUSR);
+            dup2(fd1, 1);
+            dup2(fd1, 2);
+            close(fd);
+            execve("/bin/ls", &path, environ);
+            exit(0);
+            exit(0);
+        }
+        else
+        {
+            wait(NULL);
+            
+            
+        }
+        
+        
         exit(0);
     }
 

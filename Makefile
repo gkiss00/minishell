@@ -25,6 +25,7 @@ SRCS				= 	main.c \
 						utils/file_and_dir/ft_does_file_exist.c \
 						utils/file_and_dir/ft_does_dir_exist.c \
 						utils/ft_get_path.c \
+						utils/ft_tomaj.c \
 						chain_list/cmd.c \
 						chain_list/tmp.c \
 						chain_list/ft_tab_to_tmp.c \
