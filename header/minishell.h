@@ -132,6 +132,7 @@ void                ft_programme(t_data *data);
 int                 ft_get_input(t_data *data);
 void                ft_get_actions(t_data *data, int i);
 void                ft_do_actions(t_data *data);
+void                ft_reverse_actions(t_data *data);
 /*
 ** Options
 */
