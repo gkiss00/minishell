@@ -24,7 +24,8 @@ void        ft_reverse_actions(t_data *data)
     while(i < size / 2)
     {
         cmd = data->cmd_tab[i];
-        data->cmd_tab[i] = data->cmd_tab[size - i];
-        data->cmd_tab[size - i] = cmd;
+        data->cmd_tab[i] = data->cmd_tab[size - 1 - i];
+        data->cmd_tab[size - 1 - i] = cmd;
+        ++i;
     }
 }

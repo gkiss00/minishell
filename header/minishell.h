@@ -40,6 +40,7 @@
 #define NO_FILE_OR_DIR 4
 #define SYNTAX 5
 #define PERMISSION_DENIED 6
+#define FORK 7
 
 extern char         **environ;
 
@@ -167,6 +168,7 @@ int                 ft_check_input(t_data *data);
 ** Redirections
 */
 int                 ft_check_redirections(t_cmd *cmd, char *current);
+int                 ft_fork(t_data *data);
 /*
 ** Free
 */

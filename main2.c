@@ -52,8 +52,6 @@ int     main()
         dup2(fd1, 2);
         close(fd1);
         wait(NULL);
-        execve("/bin/grep", &tmp, environ);
+        //execve("/bin/grep", &tmp, environ);
     }
-    
-
 }

@@ -28,5 +28,9 @@ int			ft_error(char *str, int i)
 	{
 		ft_putstr_fd("minishell: Permission denied\n", 2);
 	}
+	if (i == FORK)
+	{
+		ft_putstr_fd("minishell: Fork failed\n", 2);
+	}
 	return (-1);
 }
