@@ -11,6 +11,8 @@
 # **************************************************************************** #
 
 SRCS				= 	main.c \
+						utils/ft_sub_after_char.c \
+						utils/ft_sub_before_char.c \
 						utils/ft_sp_split.c \
 						utils/tab/ft_add_to_tab.c \
 						utils/ft_transform.c \
@@ -20,6 +22,7 @@ SRCS				= 	main.c \
 						utils/tab/ft_remove_back_tab.c \
 						utils/tab/ft_remove_front_tab.c \
 						utils/tab/ft_remove_from_tab.c \
+						utils/tab/ft_replace_from_tab.c \
 						utils/tab/ft_tab_join.c \
 						utils/tab/ft_join_two_tabs.c \
 						utils/file_and_dir/ft_does_file_exist.c \
@@ -30,6 +33,9 @@ SRCS				= 	main.c \
 						chain_list/tmp.c \
 						chain_list/ft_tab_to_tmp.c \
 						chain_list/ft_tmp_to_cmd.c \
+						var_env/ft_find_in_env.c \
+						var_env/ft_return_good_env.c \
+						var_env/ft_check_var_env.c \
 						free/ft_free.c \
 						free/ft_free_data.c \
 						free/ft_free_error.c \

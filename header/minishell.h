@@ -98,21 +98,30 @@ typedef struct      s_data
 ** Utils
 */
 char                **ft_sp_split(char *str, char c);
-char                **ft_add_to_tab(char **tab, char *str);
-int                 get_length(char **tab);
-char                **ft_copy_tab(char **tab);
 char                *ft_transform(char *str);
-char                **ft_copy_tab_transformed(char **tab);
+char                *ft_tab_join(char **tab, char *str);
+char                *ft_get_path(char *current, char *dir);
+char                *ft_tomaj(char *str);
+char                *ft_sub_after_char(char *str, char c);
+char                *ft_sub_before_char(char *str, char c);
+/*
+** Utils/tab
+*/
 void                ft_print_tab(char **tab);
+int                 get_length(char **tab);
+char                **ft_add_to_tab(char **tab, char *str);
 char                **ft_remove_front_tab(char **tab);
 char                **ft_remove_back_tab(char **tab);
 char                **ft_remove_from_tab(char **tab, int index);
-char                *ft_tab_join(char **tab, char *str);
+char                **ft_replace_from_tab(char **tab, char *str, int index);
+char                **ft_copy_tab(char **tab);
+char                **ft_copy_tab_transformed(char **tab);
 char                **ft_join_two_tabs(char **t1, char **t2);
-char                *ft_get_path(char *current, char *dir);
+/*
+** Utils/file_dir
+*/
 int                 ft_does_dir_exist(char *path);
 int                 ft_does_file_exist(char *path);
-char                *ft_tomaj(char *str);
 /*
 ** Chain_list
 */
@@ -139,6 +148,12 @@ void                ft_reverse_actions(t_data *data);
 */
 void                ft_sigint(int n);
 void                ft_sigquit(int n);
+/*
+** Var_env
+*/
+int                 ft_find_in_env(char **env, char*str);
+char                *ft_return_good_env(char **env, int i);
+void                ft_check_var_env(t_data* data);
 /*
 ** Cmd/pwd
 */
