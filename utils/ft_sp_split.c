@@ -115,7 +115,12 @@ char        **ft_sp_split(char *str, char c)
         compt[2] = *j;
         compt[4] = get_lenght(str, c, j);
         tmp = ft_substr(str, compt[2], compt[4]);
-        tab[compt[0]] = ft_strtrim(tmp, &c);
+
+        char strtab[2];
+        strtab[0] = c;
+        strtab[1] = 0;
+
+        tab[compt[0]] = ft_strtrim(tmp, strtab);
         free(tmp);
         ++compt[0];
     }
