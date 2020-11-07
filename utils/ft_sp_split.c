@@ -95,6 +95,15 @@ static int         get_nb_cell(char *str, char c)
     return (k[2]);
 }
 
+static char *ft_char_to_str(char c)
+{
+    char    str[2];
+    
+    str[0] = c;
+    str[1] = 0;
+    return (str);
+}
+
 char        **ft_sp_split(char *str, char c)
 {
     char    **tab;
@@ -115,12 +124,7 @@ char        **ft_sp_split(char *str, char c)
         compt[2] = *j;
         compt[4] = get_lenght(str, c, j);
         tmp = ft_substr(str, compt[2], compt[4]);
-
-        char strtab[2];
-        strtab[0] = c;
-        strtab[1] = 0;
-
-        tab[compt[0]] = ft_strtrim(tmp, strtab);
+        tab[compt[0]] = ft_strtrim(tmp, ft_char_to_str(c));
         free(tmp);
         ++compt[0];
     }
