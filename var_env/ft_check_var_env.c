@@ -1,40 +1,36 @@
 #include "./../header/minishell.h"
 
-static void ft_replace_env(t_cmd *cmd, char **env)
+static void ft_check_var_env_arg(t_data *data, t_cmd *cmd, char **env)
 {
     int     i;
-    int     index;
-    char    *tmp;
 
     i = 0;
-    while(cmd->arg && cmd->arg[i])
+    printf("cmd = %s\n", cmd->cmd);
+    while (cmd->arg && cmd->arg[i])
     {
-        index = ft_find_in_env(env, cmd->arg[i]);
-        if(index != -1)
-        {
-            tmp = ft_return_good_env(env, index);
-            cmd->arg = ft_replace_from_tab(cmd->arg, tmp, i);
-        }    
+        printf("arg = %s\n", cmd->arg[i]);
+        cmd->arg[i] = ft_replace_env(data, cmd->arg[i], env);
+        ++i;
     }
 }
 
-static void ft_check_var_env_cmd(t_cmd* cmd, char **env)
+static void ft_check_var_env_cmd(t_data *data, t_cmd* cmd, char **env)
 {
-    while(cmd)
+    while (cmd)
     {
-        ft_replace_env(cmd, env);
+        ft_check_var_env_arg(data, cmd, env);
         cmd = cmd->next;
     }
 }
 
-void        ft_check_var_env(t_data* data)
+void        ft_check_var_env(t_data *data)
 {
     int     i;
 
     i = 0;
-    while(data->cmd_tab && data->cmd_tab[i])
+    while (data->cmd_tab && data->cmd_tab[i])
     {
-        ft_check_var_env_cmd(data->cmd_tab[i], data->env);
+        ft_check_var_env_cmd(data, data->cmd_tab[i], data->env);
         ++i;
     }
 }

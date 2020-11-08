@@ -97,8 +97,10 @@ static int         get_nb_cell(char *str, char c)
 
 static char *ft_char_to_str(char c)
 {
-    char    str[2];
+    char    *str;
     
+    if ((str = malloc(2)) == NULL)
+        return (NULL);
     str[0] = c;
     str[1] = 0;
     return (str);
@@ -108,6 +110,7 @@ char        **ft_sp_split(char *str, char c)
 {
     char    **tab;
     char    *tmp;
+    char    *str_c;
     int     compt[5];
     int     *j;
 
@@ -124,7 +127,8 @@ char        **ft_sp_split(char *str, char c)
         compt[2] = *j;
         compt[4] = get_lenght(str, c, j);
         tmp = ft_substr(str, compt[2], compt[4]);
-        tab[compt[0]] = ft_strtrim(tmp, ft_char_to_str(c));
+        tab[compt[0]] = ft_strtrim(tmp, (str_c = ft_char_to_str(c)));
+        free(str_c);
         free(tmp);
         ++compt[0];
     }

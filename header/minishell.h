@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
+/*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/10/11 17:12:51 by gkiss            ###   ########.fr       */
+/*   Updated: 2020/11/08 20:56:49 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,12 @@ char                *ft_tomaj(char *str);
 char                *ft_sub_after_char(char *str, char c);
 char                *ft_sub_before_char(char *str, char c);
 /*
+** Utils/str
+*/
+char                *ft_str_delete_segment(char *str, int start, int len);
+char                *ft_str_add_segment(char *str, int start, char *segment);
+char                *ft_str_replace_segment(char *str, int start, int len, char *segment);
+/*
 ** Utils/tab
 */
 void                ft_print_tab(char **tab);
@@ -151,9 +157,11 @@ void                ft_sigquit(int n);
 /*
 ** Var_env
 */
+char                *ft_get_var_env_content(char **env, char *var_env_name);
 int                 ft_find_in_env(char **env, char*str);
 char                *ft_return_good_env(char **env, int i);
 void                ft_check_var_env(t_data* data);
+char                *ft_replace_env(t_data *data, char *str, char **env);
 /*
 ** Cmd/pwd
 */
@@ -195,4 +203,5 @@ int                 ft_free_error(t_data *data);
 void                ft_free_tab1(char *str);
 void                ft_free_tab2(char **tab);
 void                ft_free_cmd2(t_cmd **cmd);
+int                 ft_free_int(char *str);
 #endif

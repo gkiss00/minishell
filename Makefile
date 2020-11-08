@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+         #
+#    By: corentin <corentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/11 15:18:14 by cochapel          #+#    #+#              #
-#    Updated: 2020/10/11 17:18:08 by gkiss            ###   ########.fr        #
+#    Updated: 2020/11/08 20:55:12 by corentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,9 @@ SRCS				= 	main.c \
 						utils/tab/ft_replace_from_tab.c \
 						utils/tab/ft_tab_join.c \
 						utils/tab/ft_join_two_tabs.c \
+						utils/str/ft_str_delete_segment.c \
+						utils/str/ft_str_add_segment.c \
+						utils/str/ft_str_replace_segment.c \
 						utils/file_and_dir/ft_does_file_exist.c \
 						utils/file_and_dir/ft_does_dir_exist.c \
 						utils/ft_get_path.c \
@@ -36,6 +39,8 @@ SRCS				= 	main.c \
 						var_env/ft_find_in_env.c \
 						var_env/ft_return_good_env.c \
 						var_env/ft_check_var_env.c \
+						var_env/ft_replace_env.c \
+						var_env/ft_get_var_env_content.c \
 						free/ft_free.c \
 						free/ft_free_data.c \
 						free/ft_free_error.c \

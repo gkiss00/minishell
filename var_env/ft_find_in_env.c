@@ -1,6 +1,6 @@
 #include "./../header/minishell.h"
 
-static int  ft_does_match(char *env, char*str)
+static int  ft_does_match(char *env, char *str)
 {
     char    *tmp;
     int     ret;
@@ -13,7 +13,7 @@ static int  ft_does_match(char *env, char*str)
     return (ret);
 }
 
-int         ft_find_in_env(char **env, char*str)
+int         ft_find_in_env(char **env, char *str)
 {
     int     i;
 
@@ -24,6 +24,7 @@ int         ft_find_in_env(char **env, char*str)
     {
         if(ft_does_match(env[i], str) == 0)
             return (i);
+        ++i;
     }
     return (-1);
 }

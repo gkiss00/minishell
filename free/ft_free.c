@@ -36,3 +36,9 @@ void        ft_free_tab1(char *str)
     if (str)
         free(str);
 }
+
+int         ft_free_int(char *str)
+{
+    free(str);
+    return (1);
+}
