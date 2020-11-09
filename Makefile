@@ -6,7 +6,7 @@
 #    By: corentin <corentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/11 15:18:14 by cochapel          #+#    #+#              #
-#    Updated: 2020/11/08 20:55:12 by corentin         ###   ########.fr        #
+#    Updated: 2020/11/09 18:57:27 by corentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS				= 	main.c \
 						utils/str/ft_str_delete_segment.c \
 						utils/str/ft_str_add_segment.c \
 						utils/str/ft_str_replace_segment.c \
+						utils/str/ft_char_to_str.c \
 						utils/file_and_dir/ft_does_file_exist.c \
 						utils/file_and_dir/ft_does_dir_exist.c \
 						utils/ft_get_path.c \

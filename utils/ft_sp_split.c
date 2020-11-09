@@ -95,17 +95,6 @@ static int         get_nb_cell(char *str, char c)
     return (k[2]);
 }
 
-static char *ft_char_to_str(char c)
-{
-    char    *str;
-    
-    if ((str = malloc(2)) == NULL)
-        return (NULL);
-    str[0] = c;
-    str[1] = 0;
-    return (str);
-}
-
 char        **ft_sp_split(char *str, char c)
 {
     char    **tab;

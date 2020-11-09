@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/08 20:56:49 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/09 18:57:13 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ char                *ft_sub_before_char(char *str, char c);
 char                *ft_str_delete_segment(char *str, int start, int len);
 char                *ft_str_add_segment(char *str, int start, char *segment);
 char                *ft_str_replace_segment(char *str, int start, int len, char *segment);
+char                *ft_char_to_str(char c);
 /*
 ** Utils/tab
 */

@@ -4,7 +4,7 @@ static int  ft_is_n(char *str)
 {
     int     i;
 
-    i = 1;
+    i = 0;
     while (str && str[i])
     {
         if (i == 0 && str[i] != '-')
