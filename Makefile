@@ -51,7 +51,8 @@ SRCS				= 	main.c \
 						programme/ft_get_input.c \
 						programme/ft_get_actions.c \
 						programme/ft_do_actions.c \
-						programme/ft_reverse_actions.c \
+						programme/utils/ft_reverse_actions.c \
+						programme/utils/ft_transform_all.c \
 						cmd/pwd/ft_pwd.c \
 						cmd/env/ft_env.c \
 						cmd/exit/ft_exit.c \

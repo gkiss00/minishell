@@ -6,6 +6,8 @@ char        **ft_copy_tab_transformed(char **tab)
     char    **tmp;
 
     i = 0;
+    if (tab == NULL)
+        return (NULL);
     tmp = malloc(sizeof(char *) * (get_length(tab) + 1));
     if(tmp == NULL)
         return (NULL);
@@ -18,5 +20,6 @@ char        **ft_copy_tab_transformed(char **tab)
         }
         ++i;
     }
+    tmp[i] = NULL;
     return (tmp);
 }

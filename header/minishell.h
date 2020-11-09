@@ -149,7 +149,11 @@ void                ft_programme(t_data *data);
 int                 ft_get_input(t_data *data);
 void                ft_get_actions(t_data *data, int i);
 void                ft_do_actions(t_data *data);
+/*
+** Programme/utils
+*/
 void                ft_reverse_actions(t_data *data);
+void                ft_transform_all(t_data *data);
 /*
 ** Options
 */
@@ -179,7 +183,9 @@ void                ft_exit(t_data *data);
 ** Cmd/echo
 */
 void                ft_echo(t_data *data);
-
+/*
+** Cmd/cd
+*/
 void                ft_cd(t_data *data);
 /*
 ** Cmd_options

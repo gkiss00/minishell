@@ -1,24 +1,27 @@
 #include "./../../header/minishell.h"
 
-static void ft_go(t_data *data)
+static int ft_go(t_data *data)
 {
     char *tmp;
+    char *t;
 
-    tmp = NULL;
-    tmp = ft_get_path(data->path, data->cmd_tab[data->a]->arg[0]);
+    if ((t = ft_transform(data->cmd_tab[data->a]->arg[0])) == NULL)
+        return (ft_error(NULL, MALLOC));
+    tmp = ft_get_path(data->path, t);
+    free(t);
     if(tmp == NULL)
-        ft_error(NULL, MALLOC);
+        return (ft_error(NULL, MALLOC));
     if (ft_does_dir_exist(tmp) == 0)
     {
         free(data->path);
         data->path = tmp;
+        return (0);
     }
     else
-        ft_error(NULL, NO_FILE_OR_DIR);
-    
+        return (ft_error(NULL, NO_FILE_OR_DIR));
 }
 
-static void ft_go_home(t_data *data)
+static int ft_go_home(t_data *data)
 {
     char    *tmp;
     int     index;
@@ -32,12 +35,13 @@ static void ft_go_home(t_data *data)
         {
             free(data->path);
             data->path = tmp;
+            return (0);
         }
         else
-            ft_error(NULL, MALLOC);
+            return (ft_error(NULL, MALLOC));
     }
     else
-        ft_error(NULL, NO_FILE_OR_DIR);
+        return (ft_error(NULL, NO_FILE_OR_DIR));
 }
 
 void        ft_cd(t_data *data)
