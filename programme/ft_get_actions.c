@@ -84,5 +84,4 @@ void                ft_get_actions(t_data *data, int i)
     ft_check_options_echo(data);
     ft_check_var_env(data);
     ft_transform_all(data);
-    ft_print_cmd(data->cmd_tab[0]);
 }
