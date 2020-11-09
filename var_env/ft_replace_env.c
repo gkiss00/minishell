@@ -94,7 +94,6 @@ char    *ft_replace_env(t_data *data, char *str, char **env)
 {
     int     i;
 
-    printf("arg = %s\n", str);
     i = -1;
     while (str != NULL && str[++i])
     {
@@ -103,6 +102,5 @@ char    *ft_replace_env(t_data *data, char *str, char **env)
             str = ft_replace_env_char(data, str, env, i);
         }
     }
-    printf("str = %s\n", str);
     return (str);
 }

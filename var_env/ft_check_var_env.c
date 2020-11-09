@@ -5,10 +5,8 @@ static void ft_check_var_env_arg(t_data *data, t_cmd *cmd, char **env)
     int     i;
 
     i = 0;
-    printf("cmd = %s\n", cmd->cmd);
     while (cmd->arg && cmd->arg[i])
     {
-        printf("arg = %s\n", cmd->arg[i]);
         cmd->arg[i] = ft_replace_env(data, cmd->arg[i], env);
         ++i;
     }
