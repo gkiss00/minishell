@@ -8,8 +8,8 @@ void        ft_echo(t_data *data)
     while(data->cmd_tab[data->a]->arg && data->cmd_tab[data->a]->arg[i])
     {
         ft_putstr_fd(data->cmd_tab[0]->arg[i], 1);
-        if (data->cmd_tab[0]->arg[i + 1])
-        ft_putstr_fd(" ", 1);
+        if (data->cmd_tab[data->a]->arg[i + 1])
+            ft_putstr_fd(" ", 1);
         ++i;
     }
     if (data->cmd_tab[data->a]->opt == 0)
