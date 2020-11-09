@@ -3,15 +3,15 @@
 static void ft_parent(t_data *data)
 {
     wait(NULL);
-    printf("je suis parent : %d\n", data->cmd_act);
+    printf("je suis parent : %d\n", data->a);
 }
 
 static void ft_child(t_data *data)
 {
     
-    printf("je suis enfant : %d\n", data->cmd_act);
-    ++data->cmd_act;
-    if(!data->cmd_tab[data->cmd_act])
+    printf("je suis enfant : %d\n", data->a);
+    ++data->a;
+    if(!data->cmd_tab[data->a])
         exit(0);
     else
         ft_fork(data);

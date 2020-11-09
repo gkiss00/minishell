@@ -85,7 +85,7 @@ typedef struct      s_data
     
     struct s_cmd    *cmd;
     struct s_cmd    **cmd_tab;
-    int             cmd_act;
+    int             a;
 
     int             fd;
 
