@@ -56,6 +56,7 @@ SRCS				= 	main.c \
 						cmd/env/ft_env.c \
 						cmd/exit/ft_exit.c \
 						cmd/echo/ft_echo.c \
+						cmd/cd/ft_cd.c \
 						cmd_options/ft_check_options_echo.c \
 						redirections/ft_check_redirections.c \
 						redirections/ft_fork.c \

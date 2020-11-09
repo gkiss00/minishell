@@ -179,6 +179,8 @@ void                ft_exit(t_data *data);
 ** Cmd/echo
 */
 void                ft_echo(t_data *data);
+
+void                ft_cd(t_data *data);
 /*
 ** Cmd_options
 */
