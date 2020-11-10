@@ -44,8 +44,6 @@
 
 extern char         **environ;
 
-//const int MALLOC_ERROR = 1;
-
 typedef struct      s_tmp
 {
     char            *str;
@@ -88,6 +86,7 @@ typedef struct      s_data
     int             a;
 
     int             fd;
+    char            *readed;
 
     int             last_output;
     int             ret;
@@ -209,7 +208,12 @@ int                 ft_check_input(t_data *data);
 ** Redirections
 */
 int                 ft_check_redirections(t_cmd *cmd, char *current);
+void                ft_do_redirections(t_data *data);
 int                 ft_fork(t_data *data);
+/*
+** Hub
+*/
+void                ft_hub(t_data *data, char *cmd);
 /*
 ** Free
 */

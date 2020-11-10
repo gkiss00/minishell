@@ -62,7 +62,9 @@ SRCS				= 	main.c \
 						cmd/cd/ft_cd.c \
 						cmd_options/ft_check_options_echo.c \
 						redirections/ft_check_redirections.c \
+						redirections/ft_do_redirections.c \
 						redirections/ft_fork.c \
+						hub/ft_hub.c \
 						errors/ft_errors.c \
 						errors/input_errors/ft_check_input.c \
 

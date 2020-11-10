@@ -19,6 +19,7 @@ static void     init_data(t_data *data)
     data->cmd_tab = NULL;
     data->a = 0;
     data->fd = 1;
+    data->readed = NULL;
     data->last_output = 0;
     data->ret = 0;
 }
