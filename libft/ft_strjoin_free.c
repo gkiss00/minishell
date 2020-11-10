@@ -21,6 +21,8 @@ static void free_rest(char *s1, char *s2, int n)
 		free(s1);
 		free(s2);
 	}
+	if(n == 3)
+		free(s2);
 }
 
 char		*ft_strjoin_free(char *s1, char *s2, int n)
