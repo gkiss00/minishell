@@ -1,14 +1,15 @@
 #include "./../header/minishell.h"
 
-static void ft_read_fd(int fd)
+static int ft_read_fd(t_data *data, t_cmd *cmd)
 {
-    char    buff[10];
-    int     ret;
+    int     fd;
+    char    *path;
 
-    while((ret = read(fd, buff, 10)) > 0)
-    {
-
-    }
+    
+    path = ft_get_path(data->path, cmd->cmd);
+    fd = open(path, O_WRONLY | O_APPEND);
+    free(path);
+    return (fd);
 }
 
 static void ft_redirect(t_data *data, t_cmd *cmd)
@@ -18,13 +19,17 @@ static void ft_redirect(t_data *data, t_cmd *cmd)
 
     
     path = ft_get_path(data->path, cmd->cmd);
-    fd = open(path, O_RDONLY | O_WRONLY);
-    free(path);
     if(cmd->type == 4)
-        ft_read_fd(fd);
+        fd = ft_read_fd(data, cmd);
+    else
+    {
+        fd = open(path, O_WRONLY | O_TRUNC);
+        free(path);
+    }
     if(data->fd == -1)
         data->fd = dup(1);
     dup2(fd, 1);
+    
     close(fd);
 }
 
