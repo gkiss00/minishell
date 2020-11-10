@@ -7,7 +7,7 @@ static void ft_read_fd(int fd)
 
     while((ret = read(fd, buff, 10)) > 0)
     {
-        
+
     }
 }
 
@@ -16,12 +16,14 @@ static void ft_redirect(t_data *data, t_cmd *cmd)
     int     fd;
     char    *path;
 
-    data->fd = dup(1);
+    
     path = ft_get_path(data->path, cmd->cmd);
     fd = open(path, O_RDONLY | O_WRONLY);
     free(path);
     if(cmd->type == 4)
         ft_read_fd(fd);
+    if(data->fd == -1)
+        data->fd = dup(1);
     dup2(fd, 1);
     close(fd);
 }

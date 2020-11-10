@@ -17,7 +17,6 @@ static void ft_read_output(t_data *data, int pipefd[2])
             ++i;
         }
         str = ft_strjoin_free(str, buff, 1);
-        puts(str);
     }
     data->readed = str;
 }
@@ -25,6 +24,7 @@ static void ft_read_output(t_data *data, int pipefd[2])
 static void ft_parent(t_data *data, int pipefd[2])
 {
     wait(NULL);
+    ft_print_cmd(data->cmd_tab[data->a]);
     close(pipefd[1]);
     ft_read_output(data, pipefd);
     close(pipefd[0]);
@@ -33,6 +33,7 @@ static void ft_parent(t_data *data, int pipefd[2])
     ft_do_redirections(data);
     ft_hub(data, data->cmd_tab[data->a]->cmd);
     dup2(data->fd, 1);
+    data->fd = -1;
 }
 
 static void ft_child(t_data *data, int pipefd[2])
@@ -58,6 +59,7 @@ int         ft_fork(t_data *data)
         return(ft_error(NULL, FORK));
     else if (pid == 0)
     {
+        data->fd = -1;
         ft_child(data, pipefd);
         ft_free_data(data);
         exit(0);
