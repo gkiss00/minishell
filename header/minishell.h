@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/10 10:41:46 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/10 11:39:45 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,10 @@ void                ft_unset_arg(t_data *data, char *arg);
 ** Cmd/cd
 */
 void                ft_cd(t_data *data);
+/*
+** Cmd/exec
+*/
+void                ft_exec(t_data *data);
 /*
 ** Cmd_options
 */
