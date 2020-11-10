@@ -4,7 +4,7 @@ void     ft_hub(t_data *data, char *cmd)
 {
     char    *cmd_maj;
 
-    cmd_maj = ft_tomaj(cmd);
+    cmd_maj = NULL;
     if (ft_strcmp(cmd, "exit") == 0)
         ft_exit(data);
     else if (ft_strcmp(cmd, "export") == 0)
@@ -13,7 +13,8 @@ void     ft_hub(t_data *data, char *cmd)
         ft_unset(data);
     else if (ft_strcmp(cmd, "cd") == 0)
         ft_cd(data);
-    else if (ft_strcmp(cmd_maj, "ECHO") == 0)
+    cmd_maj = ft_tomaj(cmd);
+    if (ft_strcmp(cmd_maj, "ECHO") == 0)
         ft_echo(data);
     else if (ft_strcmp(cmd_maj, "PWD") == 0)
         ft_pwd(data);

@@ -26,8 +26,7 @@ int     main()
     int     pipefd[2];
     int     ret;
     
-    int     fd1 = open("test1.txt", O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
-    int     fd2 = open("test2.txt", O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+    
     
     pipe(pipefd);
     
@@ -44,7 +43,6 @@ int     main()
         dup2(pipefd[1], 2);  // send stderr to the pipe
 
         close(pipefd[1]);
-        dup2(fd1, 1);
         execve("/bin/ls", path, environ);
         printf("child\n");
         
@@ -54,6 +52,16 @@ int     main()
     {
         printf("parent waiting\n");
         wait(NULL);
+        close(pipefd[1]);
+        close(pipefd[0]);
+        int     fd1 = open("test1.txt", O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+        
+        dup2(fd1, 1);
+        close(fd1);
+        int     fd2 = open("test2.txt", O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+        dup2(fd2, 1);
+        close(fd2);
+        printf("je suis dans test2");
         //execve("/bin/grep", &tmp, environ);
     }
 }
