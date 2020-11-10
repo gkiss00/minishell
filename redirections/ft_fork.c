@@ -32,6 +32,7 @@ static void ft_parent(t_data *data, int pipefd[2])
         return ;
     ft_do_redirections(data);
     ft_hub(data, data->cmd_tab[data->a]->cmd);
+    dup2(data->fd, 1);
 }
 
 static void ft_child(t_data *data, int pipefd[2])
