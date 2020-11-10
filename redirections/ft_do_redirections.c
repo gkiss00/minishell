@@ -5,7 +5,6 @@ static int ft_read_fd(t_data *data, t_cmd *cmd)
     int     fd;
     char    *path;
 
-    
     path = ft_get_path(data->path, cmd->cmd);
     fd = open(path, O_WRONLY | O_APPEND);
     free(path);
@@ -17,7 +16,6 @@ static void ft_redirect(t_data *data, t_cmd *cmd)
     int     fd;
     char    *path;
 
-    
     path = ft_get_path(data->path, cmd->cmd);
     if(cmd->type == 4)
         fd = ft_read_fd(data, cmd);
@@ -29,7 +27,6 @@ static void ft_redirect(t_data *data, t_cmd *cmd)
     if(data->fd == -1)
         data->fd = dup(1);
     dup2(fd, 1);
-    
     close(fd);
 }
 
