@@ -42,7 +42,9 @@ static void ft_unset_var(t_data *data, char *name)
         {
             if (ft_strcmp(name_env, name) == 0)
             {
-                ft_remove_from_tab(data->env, i);
+                data->env = ft_remove_from_tab(data->env, i);
+                free(name_env);
+                return ;
             }
             free(name_env);
         }
@@ -58,7 +60,7 @@ void        ft_unset_arg(t_data *data, char *arg)
     }
     else
     {
-        ft_putstr_fd("bash: export: '", 1);
+        ft_putstr_fd("minishell: unset: '", 1);
         ft_putstr_fd(arg, 1);
         ft_putstr_fd("': not a valid identifier\n", 1);
     }
@@ -68,10 +70,13 @@ void        ft_unset(t_data *data)
 {
     int i;
 
+    if (data->cmd_tab[data->a]->arg == NULL)
+        return ;
     i = 0;
     while (data->cmd_tab[data->a]->arg[i] != NULL)
     {
         ft_unset_arg(data, data->cmd_tab[data->a]->arg[i]);
         ++i;
     }
+    data->last_output = 0;
 }

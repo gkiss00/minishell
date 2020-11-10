@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/10 11:39:45 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/10 21:37:54 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 
 extern char         **environ;
 
-//const int MALLOC_ERROR = 1;
+pid_t	            pid_process;
 
 typedef struct      s_tmp
 {
@@ -88,6 +88,7 @@ typedef struct      s_data
     int             a;
 
     int             fd;
+    char            *readed;
 
     int             last_output;
     int             ret;
@@ -213,7 +214,12 @@ int                 ft_check_input(t_data *data);
 ** Redirections
 */
 int                 ft_check_redirections(t_cmd *cmd, char *current);
+void                ft_do_redirections(t_data *data);
 int                 ft_fork(t_data *data);
+/*
+** Hub
+*/
+void                ft_hub(t_data *data, char *cmd);
 /*
 ** Free
 */

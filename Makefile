@@ -6,7 +6,7 @@
 #    By: corentin <corentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/11 15:18:14 by cochapel          #+#    #+#              #
-#    Updated: 2020/11/10 11:40:03 by corentin         ###   ########.fr        #
+#    Updated: 2020/11/10 21:31:33 by corentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,9 +63,12 @@ SRCS				= 	main.c \
 						cmd/exec/ft_exec.c \
 						cmd_options/ft_check_options_echo.c \
 						redirections/ft_check_redirections.c \
+						redirections/ft_do_redirections.c \
 						redirections/ft_fork.c \
+						hub/ft_hub.c \
 						errors/ft_errors.c \
 						errors/input_errors/ft_check_input.c \
+						options/ft_ctrls.c \
 
 OBJS				= ${SRCS:.c=.o}
 

@@ -24,6 +24,8 @@ void        ft_free_data(t_data *data)
     data->env = NULL;
     ft_free_tab1(data->path);
     data->path = NULL;
+    ft_free_tab1(data->readed);
+    data->readed = NULL;
     ft_free_cmd(data->cmd);
     data->cmd = NULL;
     if (data->cmd_tab != NULL)

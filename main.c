@@ -19,8 +19,10 @@ static void     init_data(t_data *data)
     data->cmd_tab = NULL;
     data->a = 0;
     data->fd = 1;
+    data->readed = NULL;
     data->last_output = 0;
     data->ret = 0;
+    pid_process = -1;
 }
 
 static int     fill_data(t_data *data)
@@ -60,7 +62,7 @@ static void     launch_programme()
 
 int             main(void)
 {
-    //signal(SIGINT, ft_sigint);
-	//signal(SIGQUIT, ft_sigquit);
+    signal(SIGINT, ft_sigint);
+	signal(SIGQUIT, ft_sigquit);
     launch_programme();
 }

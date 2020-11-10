@@ -17,16 +17,23 @@ extern char         **environ;
 int     main()
 {
     pid_t   pid;
-    char    *path = "/users/kissgautier/Desktop/minishell";
+    char    *path[3];
+    path[0] = "/bin/ls";
+    path[1] = "/users/kissgautier/desktop/minishell";
+    path[2] = NULL;
     char    *hub = "hub";
     char    buff[10];
     int     pipefd[2];
+    int     ret;
+    
+    
     
     pipe(pipefd);
+    
     pid = fork();
     if (pid < 0)
     {
-
+        printf("error\n");
     }
     else if (pid == 0)
     {
@@ -36,22 +43,25 @@ int     main()
         dup2(pipefd[1], 2);  // send stderr to the pipe
 
         close(pipefd[1]);
-        execve("/bin/ls", &path, environ);
+        execve("/bin/ls", path, environ);
+        printf("child\n");
+        
         exit(0);
     }
     else
     {
-        char *tmp = "options";
-        close(pipefd[1]);
-        int fd = open("test1.txt", O_CREAT | O_RDONLY | O_WRONLY, S_IRUSR | S_IWUSR);
-        dup2(fd, 1);
-        dup2(fd, 2);
-        close(fd);  
-        int fd1 = open("test2.txt", O_CREAT | O_RDONLY | O_WRONLY, S_IRUSR | S_IWUSR);
-        dup2(fd1, 1);
-        dup2(fd1, 2);
-        close(fd1);
+        printf("parent waiting\n");
         wait(NULL);
+        close(pipefd[1]);
+        close(pipefd[0]);
+        int     fd1 = open("test1.txt", O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+        
+        dup2(fd1, 1);
+        close(fd1);
+        int     fd2 = open("test2.txt", O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+        dup2(fd2, 1);
+        close(fd2);
+        printf("je suis dans test2");
         //execve("/bin/grep", &tmp, environ);
     }
 }

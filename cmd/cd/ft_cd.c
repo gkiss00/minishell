@@ -1,6 +1,28 @@
 #include "./../../header/minishell.h"
 
-static int ft_go(t_data *data)
+static int  ft_save_env(t_data *data, char *new_path)
+{
+    int     ind_pwd;
+    int     old_pwd;
+    char    *t1;
+    char    *t2;
+
+    ind_pwd = ft_find_in_env(data->env, "PWD");
+    old_pwd = ft_find_in_env(data->env, "OLDPWD");
+    if(ind_pwd >= 0 && old_pwd >= 0)
+    {
+        t1 = ft_sub_after_char(data->env[ind_pwd], '=');
+        t2 = ft_strjoin_free("OLDPWD=", t1, 3);
+        data->env = ft_replace_from_tab(data->env, t2, old_pwd);
+        free(t2);
+        t2 = ft_strjoin_free("PWD=", new_path, 0);
+        data->env = ft_replace_from_tab(data->env, t2, ind_pwd);
+        free(t2);
+    }
+    return (0);
+}
+
+static int  ft_go(t_data *data)
 {
     char *tmp;
 
@@ -10,6 +32,7 @@ static int ft_go(t_data *data)
     if (ft_does_dir_exist(tmp) == 0)
     {
         free(data->path);
+        ft_save_env(data, tmp);
         data->path = tmp;
         return (0);
     }
@@ -17,19 +40,20 @@ static int ft_go(t_data *data)
         return (ft_error(NULL, NO_FILE_OR_DIR));
 }
 
-static int ft_go_home(t_data *data)
+static int  ft_go_home(t_data *data)
 {
     char    *tmp;
     int     index;
 
     tmp = NULL;
     index = ft_find_in_env(data->env, "HOME");
-    if(index > 0)
+    if(index >= 0)
     {
         tmp = ft_sub_after_char(data->env[index], '=');
         if (tmp != NULL)
         {
             free(data->path);
+            ft_save_env(data, tmp);
             data->path = tmp;
             return (0);
         }

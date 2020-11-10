@@ -28,7 +28,9 @@ static char *ft_add_quotes(char *str)
     int     j;
     int     flag;
 
-    if (ft_strchr(str, '=') == 0)
+    if (str == NULL)
+        return (NULL);
+    if (ft_strchr_int(str, '=') == -1)
         return (ft_strdup(str));
     if ((with_quotes = malloc(ft_strlen(str) + 3)) == NULL)
         return (NULL);
@@ -42,6 +44,7 @@ static char *ft_add_quotes(char *str)
         if (flag == 0 && str[i] == '=')
         {
             with_quotes[j] = '"';
+            flag = 1;
             ++j;
         }
         ++i;
@@ -51,13 +54,13 @@ static char *ft_add_quotes(char *str)
     return (with_quotes);
 }
 
-void        ft_print_env_export(char **env)
+static int  ft_print_env_export(char **env)
 {
     int     i;
     char    *with_quotes;
 
     if (env == NULL)
-        return ;
+        return (-1);
     i = 0;
     while (env[i] != NULL)
     {
@@ -70,30 +73,64 @@ void        ft_print_env_export(char **env)
         ft_putstr_fd("\n", 1);
         ++i;
     }
+    return (0);
+}
+
+static int  ft_exists(char **env, char *name)
+{
+    int     i;
+    char    *tmp;
+
+    if (env == NULL)
+        return (-1);
+    i = 0;
+    while (env[i] != NULL)
+    {
+        if (ft_strchr_int(name, '=') == -1)
+            tmp = ft_strdup(env[i]);
+        else
+            tmp = ft_sub_before_char(env[i], '=');
+        if (ft_strcmp(tmp, name) == 0)
+        {
+            free(tmp);
+            return (1);
+        }
+        free(tmp);
+        ++i;
+    }
+    return (0);
+}
+
+static void ft_write_error(t_data *data, int i)
+{
+    ft_putstr_fd("minishell: export: '", 1);
+    ft_putstr_fd(data->cmd_tab[data->a]->arg[i], 1);
+    ft_putstr_fd("': not a valid identifier\n", 1);
+    data->last_output = 1;
 }
 
 void        ft_export(t_data *data)
 {
     int i;
 
-    if (data->cmd_tab[data->a]->arg[0] == NULL)
-    {
-        ft_print_env_export(data->env);
-    }
+    if (data->cmd_tab[data->a]->arg == NULL && ft_print_env_export(data->env) != 1)
+        return ;
     i = 0;
+    data->last_output = 0;
     while (data->cmd_tab[data->a]->arg[i] != NULL)
     {
         if (ft_is_good_arg(data->cmd_tab[data->a]->arg[i]) == 1)
         {
-            ft_unset_arg(data, data->cmd_tab[data->a]->arg[i]);
-            ft_add_to_tab(data->env, data->cmd_tab[data->a]->arg[i]);
+            if (ft_strchr_int(data->cmd_tab[data->a]->arg[i], '=') != -1)
+            {
+                ft_unset_arg(data, ft_sub_before_char(data->cmd_tab[data->a]->arg[i], '='));
+                data->env = ft_add_to_tab(data->env, data->cmd_tab[data->a]->arg[i]);
+            }
+            else if (ft_exists(data->env, data->cmd_tab[data->a]->arg[i]) == 0)
+                data->env = ft_add_to_tab(data->env, data->cmd_tab[data->a]->arg[i]);
         }
         else
-        {
-            ft_putstr_fd("bash: export: '", 1);
-            ft_putstr_fd(data->cmd_tab[data->a]->arg[i], 1);
-            ft_putstr_fd("': not a valid identifier\n", 1);
-        }
+            ft_write_error(data, i);
         ++i;
     }
 }
