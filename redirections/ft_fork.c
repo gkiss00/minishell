@@ -3,19 +3,13 @@
 static void ft_read_output(t_data *data, int pipefd[2])
 {
     int     ret;
-    int     i;
     char    buff[10];
     char    *str;
 
     str = NULL;
     while((ret = read(pipefd[0], buff, 9)) > 0)
     {
-        i = 0;
-        while(i < 10)
-        {
-            buff[i] = '\0';
-            ++i;
-        }
+        buff[ret] = '\0';
         str = ft_strjoin_free(str, buff, 1);
     }
     data->readed = str;
@@ -24,7 +18,6 @@ static void ft_read_output(t_data *data, int pipefd[2])
 static void ft_parent(t_data *data, int pipefd[2])
 {
     wait(NULL);
-    ft_print_cmd(data->cmd_tab[data->a]);
     close(pipefd[1]);
     ft_read_output(data, pipefd);
     close(pipefd[0]);
