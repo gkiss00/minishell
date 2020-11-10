@@ -6,7 +6,7 @@
 #    By: corentin <corentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/11 15:18:14 by cochapel          #+#    #+#              #
-#    Updated: 2020/11/09 18:57:27 by corentin         ###   ########.fr        #
+#    Updated: 2020/11/09 19:42:14 by corentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,8 @@ SRCS				= 	main.c \
 						cmd/env/ft_env.c \
 						cmd/exit/ft_exit.c \
 						cmd/echo/ft_echo.c \
+						cmd/export/ft_export.c \
+						cmd/unset/ft_unset.c \
 						cmd_options/ft_check_options_echo.c \
 						redirections/ft_check_redirections.c \
 						redirections/ft_fork.c \

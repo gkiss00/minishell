@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/09 18:57:13 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/09 21:49:33 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,15 @@ void                ft_exit(t_data *data);
 ** Cmd/echo
 */
 void                ft_echo(t_data *data);
+/*
+** Cmd/export
+*/
+void                ft_export(t_data *data);
+/*
+** Cmd/unset
+*/
+void                ft_unset(t_data *data);
+void                ft_unset_arg(t_data *data, char *arg);
 /*
 ** Cmd_options
 */
