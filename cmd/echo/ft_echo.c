@@ -7,7 +7,7 @@ void        ft_echo(t_data *data)
     i = 0;
     while(data->cmd_tab[data->a]->arg && data->cmd_tab[data->a]->arg[i])
     {
-        ft_putstr_fd(data->cmd_tab[0]->arg[i], 1);
+        ft_putstr_fd(data->cmd_tab[data->a]->arg[i], 1);
         if (data->cmd_tab[data->a]->arg[i + 1])
             ft_putstr_fd(" ", 1);
         ++i;

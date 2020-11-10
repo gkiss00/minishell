@@ -2,6 +2,6 @@
 
 void        ft_pwd(t_data *data)
 {
-    ft_putstr_fd(data->path, data->fd);
-    ft_putstr_fd("\n", data->fd);
+    ft_putstr_fd(data->path, 1);
+    ft_putstr_fd("\n", 1);
 }
