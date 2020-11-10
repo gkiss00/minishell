@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/09 21:49:33 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/10 10:41:46 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,11 @@ void                ft_programme(t_data *data);
 int                 ft_get_input(t_data *data);
 void                ft_get_actions(t_data *data, int i);
 void                ft_do_actions(t_data *data);
+/*
+** Programme/utils
+*/
 void                ft_reverse_actions(t_data *data);
+void                ft_transform_all(t_data *data);
 /*
 ** Options
 */
@@ -188,6 +192,10 @@ void                ft_export(t_data *data);
 */
 void                ft_unset(t_data *data);
 void                ft_unset_arg(t_data *data, char *arg);
+/*
+** Cmd/cd
+*/
+void                ft_cd(t_data *data);
 /*
 ** Cmd_options
 */

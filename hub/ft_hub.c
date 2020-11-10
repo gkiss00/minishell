@@ -4,7 +4,7 @@ void     ft_hub(t_data *data, char *cmd)
 {
     char    *cmd_maj;
 
-    cmd_maj = ft_tomaj_stack(cmd, ft_strlen(cmd));
+    cmd_maj = ft_tomaj(cmd);
     if (ft_strcmp(cmd, "exit") == 0)
         ft_export(data);
     if (ft_strcmp(cmd, "export") == 0)

@@ -6,7 +6,7 @@
 #    By: corentin <corentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/11 15:18:14 by cochapel          #+#    #+#              #
-#    Updated: 2020/11/09 19:42:14 by corentin         ###   ########.fr        #
+#    Updated: 2020/11/10 10:42:14 by corentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,13 +51,15 @@ SRCS				= 	main.c \
 						programme/ft_get_input.c \
 						programme/ft_get_actions.c \
 						programme/ft_do_actions.c \
-						programme/ft_reverse_actions.c \
+						programme/utils/ft_reverse_actions.c \
+						programme/utils/ft_transform_all.c \
 						cmd/pwd/ft_pwd.c \
 						cmd/env/ft_env.c \
 						cmd/exit/ft_exit.c \
 						cmd/echo/ft_echo.c \
 						cmd/export/ft_export.c \
 						cmd/unset/ft_unset.c \
+						cmd/cd/ft_cd.c \
 						cmd_options/ft_check_options_echo.c \
 						redirections/ft_check_redirections.c \
 						redirections/ft_fork.c \

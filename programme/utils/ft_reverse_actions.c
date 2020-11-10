@@ -1,4 +1,4 @@
-#include "../header/minishell.h"
+#include "../../header/minishell.h"
 
 static int  ft_get_lenght_cmd_tab(t_data *data)
 {
