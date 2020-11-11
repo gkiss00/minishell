@@ -113,6 +113,7 @@ void        ft_exec(t_data *data)
     }
     if ((pid_process = fork()) == 0)
 	{
+        chdir(ft_get_var_env_content(data->env, "PWD"));
 		execve(path, ft_get_execve_args(data->cmd_tab[data->a]->cmd, data->cmd_tab[data->a]->arg), ft_copy_tab(data->env));
 		return ;
 	}
