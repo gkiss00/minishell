@@ -1,5 +1,13 @@
 #include "../header/minishell.h"
 
+static int  get_fd(char *tmp)
+{
+    int     fd;
+
+    fd = open(tmp, O_RDWR | O_CREAT | O_APPEND, S_IRWXU | S_IRWXG | S_IRWXO);
+    return (fd);
+}
+
 static char *get_file_path(char *current, char *file)
 {
     char    *tmp;
@@ -34,7 +42,7 @@ static int  check_file(t_cmd *cmd, char *current)
     int     fd;
     char    *tmp;
 
-    tmp = ft_transform(cmd->cmd);
+    tmp = ft_strdup(cmd->cmd);
     if (ft_strcmp(tmp, "") == 0)
     {
         ft_free_tab1(tmp);
@@ -42,7 +50,10 @@ static int  check_file(t_cmd *cmd, char *current)
     }
     if ((tmp = get_file_path(current, tmp)) == NULL)
         return (ft_error(NULL, MALLOC));
-    fd = open(tmp, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+    if(cmd->type == 3)
+        fd = open(tmp, O_RDWR | O_CREAT | O_TRUNC , S_IRWXU | S_IRWXG | S_IRWXO);
+    else
+        fd = get_fd(tmp);
     ft_free_tab1(tmp);
     if (fd < 0)
         return (ft_error(NULL, PERMISSION_DENIED));
