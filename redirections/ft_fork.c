@@ -24,6 +24,7 @@ static void ft_parent(t_data *data, int pipefd[2])
     if (ft_check_redirections(data->cmd_tab[data->a], data->path) == -1)
         return ;
     ft_do_redirections(data);
+    ft_redirect_chevron(data);
     ft_hub(data, data->cmd_tab[data->a]->cmd);
     dup2(data->fd, 1);
     data->fd = -1;

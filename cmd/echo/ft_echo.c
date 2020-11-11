@@ -14,4 +14,5 @@ void        ft_echo(t_data *data)
     }
     if (data->cmd_tab[data->a]->opt == 0)
         ft_putstr_fd("\n", 1);
+    data->last_output = 0;
 }

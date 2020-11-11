@@ -219,6 +219,7 @@ int                 ft_check_input(t_data *data);
 */
 int                 ft_check_redirections(t_cmd *cmd, char *current);
 void                ft_do_redirections(t_data *data);
+void                ft_redirect_chevron(t_data *data);
 int                 ft_fork(t_data *data);
 /*
 ** Hub
