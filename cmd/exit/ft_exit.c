@@ -11,9 +11,7 @@ static int  ft_is_arg_valid(char *arg)
     {
         if (ft_isdigit(arg[i]) != 1)
         {
-            ft_putstr_fd("minishell: exit: ", 1);
-            ft_putstr_fd(arg, 1);
-            ft_putstr_fd(": numeric argument required\n", 1);
+            ft_error(arg, EXIT);
             return (0);
         }
         ++i;
@@ -40,7 +38,7 @@ void        ft_exit(t_data *data)
         }
         else
         {
-            ft_putstr_fd("minishell: exit: too many arguments\n", 1);
+            ft_putstr_fd("minishell: exit: too many arguments\n", 2);
             data->last_output = 1;
             return ;
         }

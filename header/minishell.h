@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/10 21:37:54 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/11 11:58:37 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,17 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 
-#define MALLOC 1
-#define NOT_FOUND 2
-#define PARSE 3
-#define NO_FILE_OR_DIR 4
-#define SYNTAX 5
-#define PERMISSION_DENIED 6
-#define FORK 7
+# define MALLOC 1
+# define NOT_FOUND 2
+# define PARSE 3
+# define NO_FILE_OR_DIR 4
+# define SYNTAX 5
+# define PERMISSION_DENIED 6
+# define FORK 7
+# define UNSET 8
+# define EXPORT 9
+# define EXEC 10
+# define EXIT 11
 
 extern char         **environ;
 

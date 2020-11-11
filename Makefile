@@ -6,7 +6,7 @@
 #    By: corentin <corentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/11 15:18:14 by cochapel          #+#    #+#              #
-#    Updated: 2020/11/10 21:31:33 by corentin         ###   ########.fr        #
+#    Updated: 2020/11/11 15:16:24 by corentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ fsanitize :			libft_all ${OBJS}
 					gcc -o ${NAME} -fsanitize=address ${FLAGS} ${LIBFT} ${SRCS}
 
 ${NAME} :			libft_all ${OBJS}
-					gcc -o ${NAME} ${FLAGS} ${LIBFT} ${SRCS}
+					gcc -o ${NAME} ${LIBFT} ${SRCS}
 
 clean :				libft_clean
 					rm -rf ${OBJS}

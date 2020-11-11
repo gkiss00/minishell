@@ -60,9 +60,7 @@ void        ft_unset_arg(t_data *data, char *arg)
     }
     else
     {
-        ft_putstr_fd("minishell: unset: '", 1);
-        ft_putstr_fd(arg, 1);
-        ft_putstr_fd("': not a valid identifier\n", 1);
+        ft_error(arg, UNSET);
     }
 }
 

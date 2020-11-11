@@ -103,9 +103,7 @@ static int  ft_exists(char **env, char *name)
 
 static void ft_write_error(t_data *data, int i)
 {
-    ft_putstr_fd("minishell: export: '", 1);
-    ft_putstr_fd(data->cmd_tab[data->a]->arg[i], 1);
-    ft_putstr_fd("': not a valid identifier\n", 1);
+    ft_error(data->cmd_tab[data->a]->arg[i], EXPORT);
     data->last_output = 1;
 }
 

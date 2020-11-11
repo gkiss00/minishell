@@ -10,6 +10,7 @@ static void	ft_ctrl_d(t_data *data)
 	int tmp;
 
 	tmp = data->last_output;
+	ft_putstr_fd("exit\n", 1);
 	ft_free_data(data);
 	exit(tmp);
 }
