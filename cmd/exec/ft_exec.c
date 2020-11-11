@@ -100,57 +100,41 @@ static char **ft_get_execve_args(char *cmd, char **args)
     return (ret);
 }
 
-static int  ft_wait_a_little(char *str)
-{
-    int i;
-    int j;
-
-    if (str == NULL)
-        return (1);
-    i = 0;
-    while (str[i] != 0)
-    {
-        j = 0;
-        while (j < 1000)
-            ++j;
-        ++i;
-    }
-    return (0);
-}
-
 void        ft_exec(t_data *data)
 {
     char    *path;
     int     fd2[2];
 
+    int f = open("test", O_WRONLY, O_TRUNC);
+    ft_putstr_fd(data->cmd_tab[data->a]->cmd, f);
+    close(f);
     if ((path = ft_find_path(data, data->cmd_tab[data->a]->cmd)) == NULL)
     {
         ft_error(data->cmd_tab[data->a]->cmd, EXEC);
         return ;
     }
-        pipe(fd2);
-        if ((pid_process = fork()) == 0)
+    pipe(fd2);
+    if ((pid_process = fork()) == 0)
+    {
+        if (data->readed)
         {
-            if (data->readed != NULL)
-                dup2(fd2[0], 0);
-            chdir(ft_get_var_env_content(data->env, "PWD"));
-		    execve(path, ft_get_execve_args(data->cmd_tab[data->a]->cmd, data->cmd_tab[data->a]->arg), ft_copy_tab(data->env));
-            exit(0);
+            dup2(fd2[0], 0);
         }
-        else
-        {
-            if (data->readed != NULL)
-            {
-                ft_putstr_fd(data->readed, fd2[1]);
-                ft_wait_a_little(data->readed);
-                kill(pid_process, SIGQUIT);
-            }
-            else
-            {
-                wait(NULL);
-            }
-            data->last_output = WEXITSTATUS(pid_process);
-            pid_process = -1;
-            free(path);
-        }
+        close(fd2[0]);
+        close(fd2[1]);
+        chdir(ft_get_var_env_content(data->env, "PWD"));
+	    execve(path, ft_get_execve_args(data->cmd_tab[data->a]->cmd, data->cmd_tab[data->a]->arg), ft_copy_tab(data->env));
+        exit(0);
+    }
+    else
+    {
+        if (data->readed)
+            ft_putstr_fd(data->readed, fd2[1]);
+        close(fd2[0]);
+        close(fd2[1]);
+        wait(NULL);
+        data->last_output = WEXITSTATUS(pid_process);
+        pid_process = -1;
+        free(path);
+    }
 }
