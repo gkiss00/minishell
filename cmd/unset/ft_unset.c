@@ -61,6 +61,7 @@ void        ft_unset_arg(t_data *data, char *arg)
     else
     {
         ft_error(arg, UNSET);
+        data->last_output = 1;
     }
 }
 
@@ -71,10 +72,10 @@ void        ft_unset(t_data *data)
     if (data->cmd_tab[data->a]->arg == NULL)
         return ;
     i = 0;
+    data->last_output = 0;
     while (data->cmd_tab[data->a]->arg[i] != NULL)
     {
         ft_unset_arg(data, data->cmd_tab[data->a]->arg[i]);
         ++i;
     }
-    data->last_output = 0;
 }

@@ -1,31 +1,5 @@
 #include "../../header/minishell.h"
 
-static int  ft_is_path_valid(char *path)
-{
-    struct stat buffer;
-
-    if (stat(path, &buffer) == 0)
-        return (1);
-    return (0);
-}
-
-static char **ft_get_path_content(char **env)
-{
-    char    *path_content;
-    char    **paths;
-
-   
-    if ((path_content = ft_get_var_env_content(env, "PATH")) == NULL)
-        return (NULL);
-    if ((paths = ft_split(path_content, ':')) == NULL)
-    {
-        free(path_content);
-        return (NULL);
-    }
-    free(path_content);
-    return (paths);
-}
-
 static char *ft_find_path_from_env(t_data *data, char *str)
 {
     char    *path;
@@ -100,41 +74,37 @@ static char **ft_get_execve_args(char *cmd, char **args)
     return (ret);
 }
 
+static void ft_close_pipe(int fd[2])
+{
+    close(fd[0]);
+    close(fd[1]);
+}
+
 void        ft_exec(t_data *data)
 {
     char    *path;
-    int     fd2[2];
+    int     fd[2];
 
-    int f = open("test", O_WRONLY, O_TRUNC);
-    ft_putstr_fd(data->cmd_tab[data->a]->cmd, f);
-    close(f);
     if ((path = ft_find_path(data, data->cmd_tab[data->a]->cmd)) == NULL)
     {
         ft_error(data->cmd_tab[data->a]->cmd, EXEC);
         return ;
     }
-    pipe(fd2);
+    pipe(fd);
     if ((pid_process = fork()) == 0)
     {
-        if (data->readed)
-        {
-            dup2(fd2[0], 0);
-        }
-        close(fd2[0]);
-        close(fd2[1]);
+        if (data->readed != NULL)
+            dup2(fd[0], 0);
+        ft_close_pipe(fd);
         chdir(ft_get_var_env_content(data->env, "PWD"));
 	    execve(path, ft_get_execve_args(data->cmd_tab[data->a]->cmd, data->cmd_tab[data->a]->arg), ft_copy_tab(data->env));
-        exit(0);
+        exit(1);
     }
-    else
-    {
-        if (data->readed)
-            ft_putstr_fd(data->readed, fd2[1]);
-        close(fd2[0]);
-        close(fd2[1]);
-        wait(NULL);
-        data->last_output = WEXITSTATUS(pid_process);
-        pid_process = -1;
-        free(path);
-    }
+    if (data->readed != NULL)
+        ft_putstr_fd(data->readed, fd[1]);
+    ft_close_pipe(fd);
+    wait(NULL);
+    data->last_output = WEXITSTATUS(pid_process);
+    pid_process = -1;
+    free(path);
 }

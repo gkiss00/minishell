@@ -1,5 +1,11 @@
 #include "../header/minishell.h"
 
+void			ft_write_export_error(t_data *data, int i)
+{
+    ft_error(data->cmd_tab[data->a]->arg[i], EXPORT);
+    data->last_output = 1;
+}
+
 static void		ft_error2(char *str, int i)
 {
 	if (i == FORK)

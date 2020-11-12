@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/11 11:58:37 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/12 17:35:31 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,8 @@ void                ft_cd(t_data *data);
 ** Cmd/exec
 */
 void                ft_exec(t_data *data);
+int                 ft_is_path_valid(char *path);
+char                **ft_get_path_content(char **env);
 /*
 ** Cmd_options
 */
@@ -214,6 +216,7 @@ void                ft_check_options_echo(t_data *data);
 */
 int			        ft_error(char *str, int i);
 int                 ft_check_input(t_data *data);
+void			    ft_write_export_error(t_data *data, int i);
 /*
 ** Redirections
 */

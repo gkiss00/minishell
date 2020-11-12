@@ -34,20 +34,17 @@ static char *ft_add_quotes(char *str)
         return (ft_strdup(str));
     if ((with_quotes = malloc(ft_strlen(str) + 3)) == NULL)
         return (NULL);
-    i = 0;
-    j = 0;
+    i = -1;
+    j = -1;
     flag = 0;
-    while (str[i] != '\0')
+    while (str[++i] != '\0')
     {
-        with_quotes[j] = str[i];
-        ++j;
+        with_quotes[++j] = str[i];
         if (flag == 0 && str[i] == '=')
         {
-            with_quotes[j] = '"';
+            with_quotes[++j] = '"';
             flag = 1;
-            ++j;
         }
-        ++i;
     }
     with_quotes[j] = '"';
     with_quotes[j + 1] = '\0';
@@ -60,7 +57,7 @@ static int  ft_print_env_export(char **env)
     char    *with_quotes;
 
     if (env == NULL)
-        return (-1);
+        return (0);
     i = 0;
     while (env[i] != NULL)
     {
@@ -101,34 +98,32 @@ static int  ft_exists(char **env, char *name)
     return (0);
 }
 
-static void ft_write_error(t_data *data, int i)
-{
-    ft_error(data->cmd_tab[data->a]->arg[i], EXPORT);
-    data->last_output = 1;
-}
-
 void        ft_export(t_data *data)
 {
-    int i;
+    int     i;
+    char    *tmp;
 
-    if (data->cmd_tab[data->a]->arg == NULL && ft_print_env_export(data->env) != 1)
-        return ;
-    i = 0;
     data->last_output = 0;
-    while (data->cmd_tab[data->a]->arg[i] != NULL)
+    if (data->cmd_tab[data->a]->arg == NULL && ft_print_env_export(data->env) == 0)
+        return ;
+    i = -1;
+    while (data->cmd_tab[data->a]->arg[++i] != NULL)
     {
         if (ft_is_good_arg(data->cmd_tab[data->a]->arg[i]) == 1)
         {
             if (ft_strchr_int(data->cmd_tab[data->a]->arg[i], '=') != -1)
             {
-                ft_unset_arg(data, ft_sub_before_char(data->cmd_tab[data->a]->arg[i], '='));
-                data->env = ft_add_to_tab(data->env, data->cmd_tab[data->a]->arg[i]);
+                if ((tmp = ft_sub_before_char(data->cmd_tab[data->a]->arg[i], '=')) != NULL)
+                {
+                    ft_unset_arg(data, tmp);
+                    free(tmp);
+                    data->env = ft_add_to_tab(data->env, data->cmd_tab[data->a]->arg[i]);
+                }
             }
             else if (ft_exists(data->env, data->cmd_tab[data->a]->arg[i]) == 0)
                 data->env = ft_add_to_tab(data->env, data->cmd_tab[data->a]->arg[i]);
         }
         else
-            ft_write_error(data, i);
-        ++i;
+            ft_write_export_error(data, i);
     }
 }
