@@ -21,7 +21,7 @@ static void ft_parent(t_data *data, int pipefd[2])
     close(pipefd[1]);
     ft_read_output(data, pipefd);
     close(pipefd[0]);
-    if (ft_check_redirections(data->cmd_tab[data->a], data->path) == -1)
+    if (ft_check_redirections(data, data->cmd_tab[data->a], data->path) == -1)
         return ;
     ft_do_redirections(data);
     ft_redirect_chevron(data);
@@ -50,7 +50,7 @@ int         ft_fork(t_data *data)
     pipe(pipefd);
     pid = fork();
     if (pid < 0)
-        return(ft_error(NULL, FORK));
+        return(ft_error(data, NULL, FORK));
     else if (pid == 0)
     {
         data->fd = -1;

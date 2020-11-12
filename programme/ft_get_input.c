@@ -72,14 +72,14 @@ int            ft_get_input(t_data *data)
     while(ft_quote_ok(data) == -1 || ft_pipe_ok(data) == -1)
     {
         if ((data->gnl_ret = get_next_line(1, &data->gnl_tmp)) == -1)
-			return (ft_error(NULL, MALLOC));
+			return (ft_error(data, NULL, MALLOC));
 		if (data->gnl_ret == 0)
 			ft_ctrl_d(data);
 		if ((data->gnl_line = ft_strjoin_free(data->gnl_line, data->gnl_tmp, 2)) == NULL)
-			return (ft_error(NULL, MALLOC));
+			return (ft_error(data, NULL, MALLOC));
     }
     if ((data->tabinput = ft_split_input(data->gnl_line)) == NULL)
-		return (ft_error(NULL, MALLOC));
+		return (ft_error(data, NULL, MALLOC));
     free(data->gnl_line);
 	data->gnl_line = NULL;
 	data->gnl_tmp = NULL;

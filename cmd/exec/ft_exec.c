@@ -87,7 +87,7 @@ void        ft_exec(t_data *data)
 
     if ((path = ft_find_path(data, data->cmd_tab[data->a]->cmd)) == NULL)
     {
-        ft_error(data->cmd_tab[data->a]->cmd, EXEC);
+        ft_error(data, data->cmd_tab[data->a]->cmd, EXEC);
         return ;
     }
     pipe(fd);

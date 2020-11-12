@@ -6,6 +6,7 @@ void     ft_hub(t_data *data, char *cmd)
     int     flag;
 
     cmd_maj = NULL;
+    data->last_output = 0;
     flag = 1;
     if (ft_strcmp(cmd, "exit") == 0)
         ft_exit(data);

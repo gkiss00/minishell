@@ -23,7 +23,7 @@ static void ft_print_env(t_data *data)
 void        ft_env(t_data *data)
 {
     if (get_length(data->cmd_tab[data->a]->arg) != 0)
-        ft_error(NULL, NO_FILE_OR_DIR);
+        ft_error(data, NULL, NO_FILE_OR_DIR);
     else
         ft_print_env(data);
 }

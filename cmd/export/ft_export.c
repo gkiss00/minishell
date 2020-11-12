@@ -103,7 +103,6 @@ void        ft_export(t_data *data)
     int     i;
     char    *tmp;
 
-    data->last_output = 0;
     if (data->cmd_tab[data->a]->arg == NULL && ft_print_env_export(data->env) == 0)
         return ;
     i = -1;

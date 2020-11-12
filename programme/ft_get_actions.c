@@ -46,7 +46,7 @@ static int          ft_devide_commandes(t_data *data)
     save = data->cmd;
     data->cmd_tab = malloc(sizeof(t_cmd*) * get_nb_pipe(data->cmd) + 1);
     if (data->cmd_tab == NULL)
-        return(ft_error(NULL, MALLOC));
+        return(ft_error(data, NULL, MALLOC));
     while(i < get_nb_pipe(save))
     {
         data->cmd_tab[i] = tmp;

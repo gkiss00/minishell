@@ -28,7 +28,7 @@ static int  ft_go(t_data *data)
 
     tmp = ft_get_path(data->path, data->cmd_tab[data->a]->arg[0]);
     if(tmp == NULL)
-        return (ft_error(NULL, MALLOC));
+        return (ft_error(data, NULL, MALLOC));
     if (ft_does_dir_exist(tmp) == 0)
     {
         free(data->path);
@@ -37,7 +37,7 @@ static int  ft_go(t_data *data)
         return (0);
     }
     else
-        return (ft_error(NULL, NO_FILE_OR_DIR));
+        return (ft_error(data, NULL, NO_FILE_OR_DIR));
 }
 
 static int  ft_go_home(t_data *data)
@@ -58,10 +58,10 @@ static int  ft_go_home(t_data *data)
             return (0);
         }
         else
-            return (ft_error(NULL, MALLOC));
+            return (ft_error(data, NULL, MALLOC));
     }
     else
-        return (ft_error(NULL, NO_FILE_OR_DIR));
+        return (ft_error(data, NULL, NO_FILE_OR_DIR));
 }
 
 void        ft_cd(t_data *data)

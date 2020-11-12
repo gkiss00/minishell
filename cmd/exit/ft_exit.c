@@ -1,6 +1,6 @@
 #include "../../header/minishell.h"
 
-static int  ft_is_arg_valid(char *arg)
+static int  ft_is_arg_valid(t_data *data, char *arg)
 {
     int i;
 
@@ -11,7 +11,7 @@ static int  ft_is_arg_valid(char *arg)
     {
         if (ft_isdigit(arg[i]) != 1)
         {
-            ft_error(arg, EXIT);
+            ft_error(data, arg, EXIT);
             return (0);
         }
         ++i;
@@ -31,7 +31,7 @@ void        ft_exit(t_data *data)
             ret = 0;
         else if (data->cmd_tab[data->a]->arg[1] == NULL)
         {
-            if (ft_is_arg_valid(data->cmd_tab[data->a]->arg[0]) == 0)
+            if (ft_is_arg_valid(data, data->cmd_tab[data->a]->arg[0]) == 0)
                 ret = 255;
             else
                 ret = ft_atoi(data->cmd_tab[data->a]->arg[0]);
