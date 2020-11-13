@@ -14,14 +14,16 @@ static char *ft_find_path_from_env(t_data *data, char *str)
     i = 0;
     while (paths[i] != NULL)
     {
-        if ((path = ft_strjoin(paths[i], backslash)) == NULL)
+        if ((path = ft_strjoin(paths[i], backslash)) == NULL && ft_free_tab2_int(paths))
             return (NULL);
-        if ((path = ft_strjoin(path, str)) == NULL)
+        if ((path = ft_strjoin_free(path, str, 1)) == NULL && ft_free_tab2_int(paths))
             return (NULL);
-        if (ft_is_path_valid(path) == 1)
+        if (ft_is_path_valid(path) == 1 && ft_free_tab2_int(paths))
             return (path);
+        free(path);
         ++i;
     }
+    ft_free_tab2(paths);
     return (NULL);
 }
 

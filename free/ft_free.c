@@ -16,6 +16,22 @@ void        ft_free_cmd2(t_cmd **cmd)
     }
 }
 
+int         ft_free_tab2_int(char **tab)
+{
+    int     i;
+
+    i = 0;
+    if (tab == NULL)
+        return (1);
+    while(tab[i] != NULL)
+    {
+        free(tab[i]);
+        ++i;
+    }
+    free(tab);
+    return (1);
+}
+
 void        ft_free_tab2(char **tab)
 {
     int     i;

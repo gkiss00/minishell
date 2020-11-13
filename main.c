@@ -8,7 +8,6 @@ static void     init_data(t_data *data)
     data->c1 = 0;
     data->c2 = 0;
     data->tmp = NULL;
-    data->tab_tmp = NULL;
     data->gnl_ret = 0;
     data->gnl_line = NULL;
     data->gnl_tmp = NULL;

@@ -19,28 +19,38 @@ static int  ft_is_arg_valid(t_data *data, char *arg)
     return (1);
 }
 
+static int  ft_nbr_args(char **args)
+{
+    int i;
+
+    i = 0;
+    while (args[i] != NULL)
+    {
+        ++i;
+    }
+    return (i);
+}
+
 void        ft_exit(t_data *data)
 {
     int ret;
 
-    if (data->cmd_tab[data->a]->arg == NULL)
+    ft_putstr_fd("exit\n", 1);
+    if (data->cmd_tab[data->a]->arg == NULL || data->cmd_tab[data->a]->arg[0] == NULL)
         ret = 0;
     else
     {
-        if (data->cmd_tab[data->a]->arg[0] == NULL)
-            ret = 0;
-        else if (data->cmd_tab[data->a]->arg[1] == NULL)
-        {
-            if (ft_is_arg_valid(data, data->cmd_tab[data->a]->arg[0]) == 0)
-                ret = 255;
-            else
-                ret = ft_atoi(data->cmd_tab[data->a]->arg[0]);
-        }
+        if (ft_is_arg_valid(data, data->cmd_tab[data->a]->arg[0]) == 0)
+            ret = 255;
         else
         {
-            ft_putstr_fd("minishell: exit: too many arguments\n", 2);
-            data->last_output = 1;
-            return ;
+            if (ft_nbr_args(data->cmd_tab[data->a]->arg) > 1)
+            {
+                ft_putstr_fd("minishell: exit: too many arguments\n", 2);
+                data->last_output = 1;
+                return ;
+            }
+            ret = ft_atoi(data->cmd_tab[data->a]->arg[0]);
         }
     }
     ft_free_data(data);

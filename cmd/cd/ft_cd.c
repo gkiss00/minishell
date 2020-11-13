@@ -27,7 +27,7 @@ static int  ft_go(t_data *data)
     char *tmp;
 
     tmp = ft_get_path(data->path, data->cmd_tab[data->a]->arg[0]);
-    if(tmp == NULL)
+    if (tmp == NULL)
         return (ft_error(data, NULL, MALLOC));
     if (ft_does_dir_exist(tmp) == 0)
     {

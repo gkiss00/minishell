@@ -66,13 +66,15 @@ static int          ft_devide_commandes(t_data *data)
 static int          ft_get_commandes(t_data *data, int i)
 {
     t_tmp   *tmp;
+    char    **tab_tmp;
 
     tmp = NULL;
-    if ((data->tab_tmp = ft_sp_split(data->tabinput[i], ' ')) == NULL)
+    if ((tab_tmp = ft_sp_split(data->tabinput[i], ' ')) == NULL)
         return (ft_free_error(data));
-    tmp = ft_tab_to_tmp(data->tab_tmp);
+    tmp = ft_tab_to_tmp(tab_tmp);
     data->cmd = ft_tmp_to_cmd(tmp);
     ft_free_tmp(tmp);
+    ft_free_tab2(tab_tmp);
     return (1);
 }
 

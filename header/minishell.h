@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/12 18:05:11 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/13 21:48:24 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ typedef struct      s_data
     int             c2;
 
     char            *tmp;
-    char            **tab_tmp;
 
     char            **env;
     char            *path;
@@ -239,6 +238,7 @@ void                ft_free_tmp(t_tmp *cmd);
 int                 ft_free_error(t_data *data);
 void                ft_free_tab1(char *str);
 void                ft_free_tab2(char **tab);
+int                 ft_free_tab2_int(char **tab);
 void                ft_free_cmd2(t_cmd **cmd);
 int                 ft_free_int(char *str);
 #endif

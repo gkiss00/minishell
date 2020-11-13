@@ -14,7 +14,7 @@ static char *get_absolute_path(char **tab)
     char    *path;
 
     i = 0;
-    while(tab != NULL && tab[i] != NULL)
+    while (tab != NULL && tab[i] != NULL)
     {
         if (ft_strcmp(tab[i], ".") == 0)
         {

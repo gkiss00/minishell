@@ -1,13 +1,5 @@
 #include "../header/minishell.h"
 
-void        ft_free_tmp_data(t_data *data)
-{
-    ft_free_tab1(data->tmp);
-    data->tmp = NULL;
-	ft_free_tab2(data->tab_tmp);
-	data->tab_tmp = NULL;
-}
-
 void        ft_free_data(t_data *data)
 {
     if (!data)
@@ -18,8 +10,6 @@ void        ft_free_data(t_data *data)
     data->gnl_tmp = NULL;
     ft_free_tab2(data->tabinput);
     data->tabinput = NULL;
-    ft_free_tab2(data->tab_tmp);
-    data->tab_tmp = NULL;
     ft_free_tab2(data->env);
     data->env = NULL;
     ft_free_tab1(data->path);
