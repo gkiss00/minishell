@@ -5,6 +5,8 @@ static void reset(t_data *data)
     data->cmd = NULL;
     ft_free_cmd2(data->cmd_tab);
     data->cmd_tab = NULL;
+    ft_free_tab1(data->readed);
+    data->readed = NULL;
 }
 
 void        ft_programme(t_data *data)
