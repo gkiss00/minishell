@@ -7,7 +7,7 @@ static int  get_size(char **tab, char *str)
 
     size = 0;
     i = 0;
-    while (tab[i] != NULL)
+    while(tab[i] != NULL)
     {
         size += ft_strlen(tab[i]);
         ++i;
@@ -24,16 +24,16 @@ static void ft_copy(char **tab, char *str, char **joined)
 
     i = 0;
     j = 0;
-    while (i < get_size(tab, str))
+    while(i < get_size(tab, str))
     {
         k = 0;
-        while (str && str[k] != '\0')
+        while(str && str[k] != '\0')
         {
             joined[0][i] = str[k++];
             ++i;
         }
         k = 0;
-        while (tab && tab[j] && tab[j][k] != '\0')
+        while(tab && tab[j] && tab[j][k] != '\0')
         {
             joined[0][i] = tab[j][k++];
             ++i;
@@ -51,6 +51,6 @@ char        *ft_tab_join(char **tab, char *str)
         return (NULL);
     if ((joined = malloc(get_size(tab, str) + 1)) == NULL)
         return (NULL);
-    ft_copy(tab, str, &joined); // leaks ici -> 100% sûr j'te dit -> cd ./ok
+    ft_copy(tab, str, &joined);
     return (joined);
 }

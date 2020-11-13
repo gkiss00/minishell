@@ -105,7 +105,7 @@ void        ft_exec(t_data *data)
     if (data->readed != NULL)
         ft_putstr_fd(data->readed, fd[1]);
     ft_close_pipe(fd);
-    wait(NULL);
+    wait(&pid_process);
     data->last_output = WEXITSTATUS(pid_process);
     pid_process = -1;
     free(path);

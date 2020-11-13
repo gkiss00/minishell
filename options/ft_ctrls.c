@@ -6,11 +6,35 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/10 21:40:51 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/13 23:27:59 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/minishell.h"
+
+void	ft_remove_print(int n)
+{
+	int i;
+
+	i = 0;
+	while (i < n)
+	{
+		ft_putstr_fd("\b", 1);
+		++i;
+	}
+	i = 0;
+	while (i < n)
+	{
+		ft_putstr_fd(" ", 1);
+		++i;
+	}
+	i = 0;
+	while (i < n)
+	{
+		ft_putstr_fd("\b", 1);
+		++i;
+	}
+}
 
 void	ft_sigint(int n)
 {
@@ -22,6 +46,7 @@ void	ft_sigint(int n)
 	}
 	else
 	{
+		ft_remove_print(2);
 		write(1, "\n-> minishell # ", 16);
 	}
 }
@@ -34,5 +59,9 @@ void	ft_sigquit(int n)
 		kill(pid_process, SIGQUIT);
 		ft_putstr_fd("Quit: 3", 1);
 		ft_putchar_fd('\n', 1);
+	}
+	else
+	{
+		ft_remove_print(2);
 	}
 }

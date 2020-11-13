@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/13 21:48:24 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/13 23:28:20 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 
 extern char         **environ;
 
-pid_t	            pid_process;
+int	                pid_process;
 
 typedef struct      s_tmp
 {
@@ -172,6 +172,7 @@ int                 ft_find_in_env(char **env, char*str);
 char                *ft_return_good_env(char **env, int i);
 void                ft_check_var_env(t_data* data);
 char                *ft_replace_env(t_data *data, char *str, char **env);
+char                *ft_replace_free(char *tmp, int i, char *str);
 /*
 ** Cmd/pwd
 */

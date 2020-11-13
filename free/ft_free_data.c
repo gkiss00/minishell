@@ -2,6 +2,8 @@
 
 void        ft_free_data(t_data *data)
 {
+    int i;
+
     if (!data)
         return ;
     ft_free_tab1(data->gnl_line);
@@ -18,8 +20,10 @@ void        ft_free_data(t_data *data)
     data->readed = NULL;
     ft_free_cmd(data->cmd);
     data->cmd = NULL;
-    if (data->cmd_tab != NULL)
-        free(data->cmd_tab);
+    if (data->cmd_tab != NULL && (i = -1) == -1)
+        while (data->cmd_tab[++i] != NULL)
+            ft_free_cmd(data->cmd_tab[i]);
+    free(data->cmd_tab);
     data->cmd_tab = NULL;
     free(data);
 }

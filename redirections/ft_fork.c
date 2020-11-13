@@ -36,7 +36,8 @@ static void ft_child(t_data *data, int pipefd[2])
     dup2(pipefd[1], 1);
     close(pipefd[1]);
     ++data->a;
-    if(!data->cmd_tab[data->a])
+
+    if (data->cmd_tab[data->a] == NULL)
         exit(0);
     else
         ft_fork(data);
@@ -47,6 +48,8 @@ int         ft_fork(t_data *data)
     pid_t   pid;
     int     pipefd[2];
 
+    if (data->cmd_tab[data->a] == NULL)
+        return (0);
     pipe(pipefd);
     pid = fork();
     if (pid < 0)

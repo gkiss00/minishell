@@ -68,6 +68,7 @@ static char *ft_replace_env_char(t_data *data, char *str, char **env, int i)
 {
     char    *var_env_name;
     char    *var_env_content;
+    char    *tmp;
     int     ret;
 
     ret = ft_is_var_env(&str[i], &var_env_name);
@@ -84,9 +85,9 @@ static char *ft_replace_env_char(t_data *data, char *str, char **env, int i)
         free(var_env_name);
     }
     else if (ret == 1)
-        str = ft_str_replace_segment(str, i, 2, ft_itoa(getpid()));
+        str = ft_replace_free(ft_itoa(getpid()), i, str);
     else if (ret == 2)
-        str = ft_str_replace_segment(str, i, 2, ft_itoa(data->last_output));
+        str = ft_replace_free(ft_itoa(data->last_output), i, str);
     return (str);
 }
 

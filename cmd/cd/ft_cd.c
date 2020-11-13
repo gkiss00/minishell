@@ -37,7 +37,10 @@ static int  ft_go(t_data *data)
         return (0);
     }
     else
+    {
+        free(tmp);
         return (ft_error(data, NULL, NO_FILE_OR_DIR));
+    }
 }
 
 static int  ft_go_home(t_data *data)

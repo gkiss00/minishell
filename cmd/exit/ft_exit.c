@@ -54,5 +54,6 @@ void        ft_exit(t_data *data)
         }
     }
     ft_free_data(data);
+    // system("leaks minishell");
     exit(ret);
 }
