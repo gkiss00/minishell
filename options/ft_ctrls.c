@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/14 08:04:46 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/14 08:25:12 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_sigint(int n)
 		ft_remove_print(2);
 		write(1, "\n-> minishell # ", 16);
 		output_ctrls = 1;
+		is_ctrl_c = 1;
 	}
 }
 

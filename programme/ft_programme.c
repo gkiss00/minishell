@@ -13,7 +13,6 @@ void        ft_programme(t_data *data)
 {
     int     i;
 
-    i = 0;
     if (ft_get_input(data) == -1)
         return ;
     if (ft_check_input(data) == -1)
@@ -21,20 +20,21 @@ void        ft_programme(t_data *data)
         ft_free_tab2(data->tabinput);
         data->tabinput = NULL;
         return ;
-    }   
-    while(data->tabinput[i] != NULL)
+    }
+    if (is_ctrl_c == 1)
+        data->last_output = 1;
+    i = -1;
+    while(data->tabinput[++i] != NULL)
     {
         ft_get_actions(data, i);
         ft_do_actions(data);
         reset(data);
-        ++i;
     }
     ft_free_tab2(data->tabinput);
     data->tabinput = NULL;
     if (output_ctrls != -1)
-    {
         data->last_output = output_ctrls;
-        output_ctrls = -1;
-    }
+    output_ctrls = -1;
+    is_ctrl_c = 0;
     // system("leaks minishell");
 }

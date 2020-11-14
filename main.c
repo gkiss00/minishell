@@ -22,6 +22,8 @@ static void     init_data(t_data *data)
     data->last_output = 0;
     data->ret = 0;
     pid_process = -1;
+    output_ctrls = -1;
+    is_ctrl_c = 0;
 }
 
 static int     fill_data(t_data *data)
