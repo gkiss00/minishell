@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_errors.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
+/*   Updated: 2020/11/14 11:07:09 by gkiss            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../header/minishell.h"
 
 void			ft_write_export_error(t_data *data, int i)
 {
-    ft_error(data, data->cmd_tab[data->a]->arg[i], EXPORT);
+	ft_error(data, data->cmd_tab[data->a]->arg[i], EXPORT);
 }
 
 static void		ft_error3(t_data *data, char *str, int i)
@@ -10,13 +22,12 @@ static void		ft_error3(t_data *data, char *str, int i)
 	if (i == EXIT)
 	{
 		ft_putstr_fd("exit: ", 2);
-        ft_putstr_fd(str, 2);
-        ft_putstr_fd(": numeric argument required", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd(": numeric argument required", 2);
 	}
 	else if (i == PERMISSION_DENIED)
 		ft_putstr_fd("Permission denied", 2);
 }
-
 
 static void		ft_error2(t_data *data, char *str, int i)
 {
@@ -25,28 +36,28 @@ static void		ft_error2(t_data *data, char *str, int i)
 	else if (i == UNSET)
 	{
 		ft_putstr_fd("unset: '", 2);
-        ft_putstr_fd(str, 2);
-        ft_putstr_fd("': not a valid identifier", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("': not a valid identifier", 2);
 		data->last_output = 1;
 	}
 	else if (i == EXPORT)
 	{
 		ft_putstr_fd("export: '", 2);
-    	ft_putstr_fd(str, 2);
-    	ft_putstr_fd("': not a valid identifier", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("': not a valid identifier", 2);
 		data->last_output = 1;
 	}
 	else if (i == EXEC)
 	{
-        ft_putstr_fd(str, 2);
-        ft_putstr_fd(": command not found", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd(": command not found", 2);
 		data->last_output = 127;
 	}
 	else
 		ft_error3(data, str, i);
 }
 
-int			ft_error(t_data *data, char *str, int i)
+int				ft_error(t_data *data, char *str, int i)
 {
 	ft_putstr_fd("minishell: ", 2);
 	if (i == MALLOC)
