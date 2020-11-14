@@ -6,7 +6,7 @@
 /*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/14 12:56:51 by gkiss            ###   ########.fr       */
+/*   Updated: 2020/11/14 12:59:51 by gkiss            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void		init_data(t_data *data)
 
 static int		fill_data(t_data *data)
 {
+	extern char	**environ;
+
 	if ((data->env = ft_copy_tab(environ)) == NULL)
 		return (1);
 	if ((data->path = ft_calloc(1, 200)) == NULL)

@@ -6,7 +6,7 @@
 /*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/14 11:48:59 by gkiss            ###   ########.fr       */
+/*   Updated: 2020/11/14 12:59:04 by gkiss            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@
 # define EXEC 10
 # define EXIT 11
 # define CD 12
-
-extern char			**environ;
 
 int					g_pid_process;
 int					g_output_ctrls;
