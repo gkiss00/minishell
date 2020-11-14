@@ -6,7 +6,7 @@
 /*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/14 11:10:38 by gkiss            ###   ########.fr       */
+/*   Updated: 2020/11/14 11:39:02 by gkiss            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		ft_free_cmd2(t_cmd **cmd)
 	}
 }
 
-int			t_free_tab2_int(char **tab)
+int			ft_free_tab2_int(char **tab)
 {
 	int		i;
 

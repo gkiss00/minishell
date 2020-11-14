@@ -6,7 +6,7 @@
 /*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/14 10:42:42 by gkiss            ###   ########.fr       */
+/*   Updated: 2020/11/14 11:43:10 by gkiss            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int			ft_exec(t_data *data)
 	if ((path = ft_find_path(data, data->cmd_tab[data->a]->cmd)) == NULL)
 		return (ft_error(data, data->cmd_tab[data->a]->cmd, EXEC));
 	pipe(fd);
-	if ((pid_process = fork()) == 0)
+	if ((g_pid_process = fork()) == 0)
 	{
 		if (data->readed != NULL)
 			dup2(fd[0], 0);
@@ -119,9 +119,9 @@ int			ft_exec(t_data *data)
 	if (data->readed != NULL)
 		ft_putstr_fd(data->readed, fd[1]);
 	ft_close_pipe(fd);
-	wait(&pid_process);
-	data->last_output = WEXITSTATUS(pid_process);
-	pid_process = -1;
+	wait(&g_pid_process);
+	data->last_output = WEXITSTATUS(g_pid_process);
+	g_pid_process = -1;
 	free(path);
 	return (0);
 }
