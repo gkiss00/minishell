@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/14 08:24:15 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/14 10:43:02 by gkiss            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ void                ft_cd(t_data *data);
 /*
 ** Cmd/exec
 */
-void                ft_exec(t_data *data);
+int                 ft_exec(t_data *data);
 int                 ft_is_path_valid(char *path);
 char                **ft_get_path_content(char **env);
 /*
