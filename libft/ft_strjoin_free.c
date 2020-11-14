@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cochapel <cochapel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 19:04:09 by cochapel          #+#    #+#             */
-/*   Updated: 2020/03/01 10:24:05 by cochapel         ###   ########.fr       */
+/*   Updated: 2020/11/14 11:52:59 by gkiss            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void free_rest(char *s1, char *s2, int n)
+static void	free_rest(char *s1, char *s2, int n)
 {
 	if (n == 1)
 		free(s1);
@@ -21,7 +21,7 @@ static void free_rest(char *s1, char *s2, int n)
 		free(s1);
 		free(s2);
 	}
-	if(n == 3)
+	if (n == 3)
 		free(s2);
 }
 

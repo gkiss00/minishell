@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cochapel <cochapel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:39:18 by cochapel          #+#    #+#             */
-/*   Updated: 2020/02/29 15:16:52 by cochapel         ###   ########.fr       */
+/*   Updated: 2020/11/14 11:53:39 by gkiss            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ char				*ft_strndup(const char *s1, int n);
 int					get_next_line(int fd, char **line);
 int					ft_strchr_int(const char *s, int c);
 int					ft_strcmp(char *s1, char *s2);
-char        		*ft_strjoin_free(char *s1, char *s2, int n);
+char				*ft_strjoin_free(char *s1, char *s2, int n);
 char				*ft_strnjoin(char const *s1, char const *s2, int n);
-int	        		ft_free_tab(char **tab);
-int 				ft_free_str(char *str);
-int         		ft_strrchr_int(char *str, char c);
+int					ft_free_tab(char **tab);
+int					ft_free_str(char *str);
+int					ft_strrchr_int(char *str, char c);
 
 #endif
