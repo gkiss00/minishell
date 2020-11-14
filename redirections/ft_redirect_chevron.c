@@ -1,33 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_redirect_chevron.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
+/*   Updated: 2020/11/14 12:08:49 by gkiss            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../header/minishell.h"
 
-static void ft_rewrite(t_data *data, t_cmd *cmd)
+static void	ft_rewrite(t_data *data, t_cmd *cmd)
 {
-    int     fd;
-    int     ret;
-    char    buff[10];
-    char    *path;
+	int		fd;
+	int		ret;
+	char	buff[10];
+	char	*path;
 
-    path = ft_get_path(data->path, cmd->cmd);
-    fd = open(path, O_RDONLY);
-    ft_free_tab1(data->readed);
-    data->readed = NULL;
-    while((ret = read(fd, buff, 9)) > 0)
-    {
-        buff[ret] = '\0';
-        data->readed = ft_strjoin_free(data->readed, buff, 1);
-    }
-    close(fd);
+	path = ft_get_path(data->path, cmd->cmd);
+	fd = open(path, O_RDONLY);
+	ft_free_tab1(data->readed);
+	data->readed = NULL;
+	while ((ret = read(fd, buff, 9)) > 0)
+	{
+		buff[ret] = '\0';
+		data->readed = ft_strjoin_free(data->readed, buff, 1);
+	}
+	close(fd);
 }
 
-void        ft_redirect_chevron(t_data *data)
+void		ft_redirect_chevron(t_data *data)
 {
-    t_cmd   *cmd;
+	t_cmd	*cmd;
 
-    cmd = data->cmd_tab[data->a];
-    while(cmd)
-    {
-        if(cmd->type == 2)
-            ft_rewrite(data, cmd);
-        cmd = cmd->next;
-    }
+	cmd = data->cmd_tab[data->a];
+	while (cmd)
+	{
+		if (cmd->type == 2)
+			ft_rewrite(data, cmd);
+		cmd = cmd->next;
+	}
 }
