@@ -6,15 +6,15 @@
 /*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/14 11:01:12 by gkiss            ###   ########.fr       */
+/*   Updated: 2020/11/14 11:03:47 by gkiss            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/minishell.h"
 
-static int      ft_is_n(char *str)
+static int		ft_is_n(char *str)
 {
-	int     i;
+	int		i;
 
 	i = 0;
 	while (str && str[i])
@@ -28,9 +28,9 @@ static int      ft_is_n(char *str)
 	return (0);
 }
 
-static void     ft_check_for_n(t_cmd *cmd)
+static void		ft_check_for_n(t_cmd *cmd)
 {
-	int     i;
+	int		i;
 
 	i = 0;
 	while (cmd->arg && cmd->arg[i])
@@ -45,10 +45,10 @@ static void     ft_check_for_n(t_cmd *cmd)
 	}
 }
 
-static void     ft_is_echo(t_cmd *cmd)
+static void		ft_is_echo(t_cmd *cmd)
 {
-	char    *tmp1;
-	char    *tmp2;
+	char	*tmp1;
+	char	*tmp2;
 
 	tmp1 = ft_transform(cmd->cmd);
 	tmp2 = ft_tomaj(tmp1);
@@ -60,9 +60,9 @@ static void     ft_is_echo(t_cmd *cmd)
 	ft_free_tab1(tmp2);
 }
 
-void            ft_check_options_echo(t_data *data)
+void			ft_check_options_echo(t_data *data)
 {
-    int     i;
+	int		i;
 
 	i = 0;
 	while (data->cmd_tab && data->cmd_tab[i])
