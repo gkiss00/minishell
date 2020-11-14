@@ -1,30 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cmd.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
+/*   Updated: 2020/11/14 10:25:42 by gkiss            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../header/minishell.h"
 
-void        ft_print_cmd(t_cmd *head)
+void		ft_print_cmd(t_cmd *head)
 {
-    t_cmd   *save;
+	t_cmd	*save;
 
-    save = head;
-    while (head != NULL)
-    {
-        ft_putstr_fd("\n", 1);
-        ft_putstr_fd("cmd : ", 1);
-        ft_putstr_fd(head->cmd, 1);
-        ft_putstr_fd("\n", 1);
-        ft_putstr_fd("arg : ", 1);
-        ft_print_tab(head->arg);
-        ft_putnbr_fd(head->type, 1);
-        ft_putstr_fd("\n", 1);
-        ft_putnbr_fd(head->opt, 1);
-        ft_putstr_fd("\n", 1);
-        head = head->next;
-    }
-    head = save;
+	save = head;
+	while (head != NULL)
+	{
+		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("cmd : ", 1);
+		ft_putstr_fd(head->cmd, 1);
+		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("arg : ", 1);
+		ft_print_tab(head->arg);
+		ft_putnbr_fd(head->type, 1);
+		ft_putstr_fd("\n", 1);
+		ft_putnbr_fd(head->opt, 1);
+		ft_putstr_fd("\n", 1);
+		head = head->next;
+	}
+	head = save;
 }
 
-void        ft_cmd_add_back(t_cmd **head, t_cmd *new)
+void		ft_cmd_add_back(t_cmd **head, t_cmd *new)
 {
-    t_cmd	*last;
+	t_cmd	*last;
 
 	if (head)
 	{
@@ -38,9 +50,9 @@ void        ft_cmd_add_back(t_cmd **head, t_cmd *new)
 	}
 }
 
-t_cmd       *ft_cmd_last(t_cmd *head)
+t_cmd		*ft_cmd_last(t_cmd *head)
 {
-    while (head)
+	while (head)
 	{
 		if (!head->next)
 			return (head);
@@ -49,16 +61,16 @@ t_cmd       *ft_cmd_last(t_cmd *head)
 	return (head);
 }
 
-t_cmd       *ft_cmd_new()
+t_cmd		*ft_cmd_new(void)
 {
-    t_cmd *new;
+	t_cmd *new;
 
-    if ((new = malloc(sizeof(t_cmd))) == NULL)
-        return (NULL);
-    new->cmd = NULL;
-    new->arg = NULL;
-    new->type = 0;
-    new->opt = 0;
-    new->next = NULL;
-    return (new);
+	if ((new = malloc(sizeof(t_cmd))) == NULL)
+		return (NULL);
+	new->cmd = NULL;
+	new->arg = NULL;
+	new->type = 0;
+	new->opt = 0;
+	new->next = NULL;
+	return (new);
 }
