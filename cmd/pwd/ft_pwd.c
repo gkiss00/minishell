@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
+/*   Updated: 2020/11/14 10:52:27 by gkiss            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../header/minishell.h"
 
-void        ft_pwd(t_data *data)
+void		ft_pwd(t_data *data)
 {
-    ft_putstr_fd(data->path, 1);
-    ft_putstr_fd("\n", 1);
+	ft_putstr_fd(data->path, 1);
+	ft_putstr_fd("\n", 1);
 }
