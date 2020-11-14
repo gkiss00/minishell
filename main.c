@@ -39,7 +39,6 @@ static int     fill_data(t_data *data)
         return (1);
     }
     return (0);
-    
 }
 
 static void     launch_programme()

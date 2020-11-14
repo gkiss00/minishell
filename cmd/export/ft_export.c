@@ -46,7 +46,7 @@ static char *ft_add_quotes(char *str)
             flag = 1;
         }
     }
-    with_quotes[j] = '"';
+    with_quotes[++j] = '"';
     with_quotes[j + 1] = '\0';
     return (with_quotes);
 }

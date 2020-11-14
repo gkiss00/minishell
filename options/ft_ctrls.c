@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/13 23:27:59 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/14 08:04:46 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ void	ft_sigint(int n)
 	{
 		kill(pid_process, SIGINT);
 		ft_putchar_fd('\n', 1);
+		output_ctrls = 130;
 	}
 	else
 	{
 		ft_remove_print(2);
 		write(1, "\n-> minishell # ", 16);
+		output_ctrls = 1;
 	}
 }
 
@@ -59,6 +61,7 @@ void	ft_sigquit(int n)
 		kill(pid_process, SIGQUIT);
 		ft_putstr_fd("Quit: 3", 1);
 		ft_putchar_fd('\n', 1);
+		output_ctrls = 131;
 	}
 	else
 	{

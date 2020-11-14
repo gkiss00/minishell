@@ -6,7 +6,7 @@
 /*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:21:17 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/13 23:28:20 by corentin         ###   ########.fr       */
+/*   Updated: 2020/11/14 08:04:51 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 extern char         **environ;
 
 int	                pid_process;
+int                 output_ctrls;
 
 typedef struct      s_tmp
 {
