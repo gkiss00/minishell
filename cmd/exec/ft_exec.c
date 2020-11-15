@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
+/*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/14 11:43:10 by gkiss            ###   ########.fr       */
+/*   Updated: 2020/11/15 12:35:19 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ static char	*ft_find_path(t_data *data, char *str)
 	char	*path;
 	char	*tmp;
 	char	*tmp2;
-	char	backslash[2];
 
-	backslash[0] = '/';
-	backslash[1] = '\0';
-	if (str[0] == '/' && (path = ft_strdup(str)) == NULL)
-		return (NULL);
+	if (str[0] == '/')
+	{
+		if ((path = ft_strdup(str)) == NULL)
+			return (NULL);
+	}
 	else if ((path = ft_find_path_from_env(data, str)) == NULL)
 	{
 		if ((tmp = ft_get_var_env_content(data->env, "PWD")) == NULL)
 			return (NULL);
-		if ((tmp2 = ft_strjoin(tmp, backslash)) == NULL && ft_free_int(tmp))
+		if ((tmp2 = ft_strjoin(tmp, "/")) == NULL && ft_free_int(tmp))
 			return (NULL);
 		if ((path = ft_strjoin(tmp2, str)) == NULL
 		&& ft_free_int(tmp) && ft_free_int(tmp2))

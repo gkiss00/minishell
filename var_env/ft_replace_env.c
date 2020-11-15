@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_replace_env.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
+/*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/14 12:54:49 by gkiss            ###   ########.fr       */
+/*   Updated: 2020/11/15 12:38:02 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ static char		*ft_replace_env_char(t_data *data, char *str, char **env, int i)
 {
 	char	*ven;
 	char	*vec;
-	char	*tmp;
 	int		ret;
 
 	ret = ft_is_var_env(&str[i], &ven);

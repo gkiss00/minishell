@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_errors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gkiss <gkiss@student.42.fr>                +#+  +:+       +#+        */
+/*   By: corentin <corentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 12:24:49 by cochapel          #+#    #+#             */
-/*   Updated: 2020/11/14 11:07:09 by gkiss            ###   ########.fr       */
+/*   Updated: 2020/11/15 12:38:28 by corentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void			ft_write_export_error(t_data *data, int i)
 	ft_error(data, data->cmd_tab[data->a]->arg[i], EXPORT);
 }
 
-static void		ft_error3(t_data *data, char *str, int i)
+static void		ft_error3(char *str, int i)
 {
 	if (i == EXIT)
 	{
@@ -54,7 +54,7 @@ static void		ft_error2(t_data *data, char *str, int i)
 		data->last_output = 127;
 	}
 	else
-		ft_error3(data, str, i);
+		ft_error3(str, i);
 }
 
 int				ft_error(t_data *data, char *str, int i)
